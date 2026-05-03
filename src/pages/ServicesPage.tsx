@@ -2,13 +2,13 @@ import { useRef, useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 import CTA from '../components/CTA';
 
-function useInView(threshold = 0.15) {
+function useInView(threshold = 0.02) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
-    }, { threshold });
+    }, { threshold, rootMargin: '50px' });
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [threshold]);

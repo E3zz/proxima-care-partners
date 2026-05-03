@@ -36,37 +36,6 @@ const team = [
   },
 ];
 
-const values = [
-  {
-    icon: 'shield',
-    title: 'The Precision Standard',
-    description: 'We apply clinical rigor to financial data. Every audit is a surgical examination of your revenue cycle, identifying inefficiencies with scientific accuracy.',
-    dark: true,
-    large: true,
-  },
-  {
-    icon: 'groups',
-    title: 'Collaborative Partners',
-    description: "We don't just provide reports - we work alongside your administrative team to implement lasting, meaningful change.",
-    dark: false,
-    large: false,
-  },
-  {
-    icon: 'visibility',
-    title: 'Transparency',
-    description: 'No hidden fees. No opaque processes. Just clear, actionable financial truth delivered in plain language.',
-    dark: false,
-    large: false,
-  },
-  {
-    icon: 'lock',
-    title: 'Security First',
-    description: 'Enterprise-grade HIPAA compliance is the baseline of our entire technical and operational stack.',
-    teal: true,
-    large: false,
-  },
-];
-
 const stats = [
   { end: 10, prefix: '',  suffix: '+',  label: 'Years of Experience' },
   { end: 20, prefix: '',  suffix: '+',  label: 'Active Clients'       },

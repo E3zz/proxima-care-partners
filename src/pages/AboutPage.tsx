@@ -47,7 +47,7 @@ const values = [
   {
     icon: 'groups',
     title: 'Collaborative Partners',
-    description: "We don't just provide reports — we work alongside your administrative team to implement lasting, meaningful change.",
+    description: "We don't just provide reports - we work alongside your administrative team to implement lasting, meaningful change.",
     dark: false,
     large: false,
   },
@@ -110,7 +110,7 @@ export default function AboutPage() {
     <>
       <SEO
         title="About Us | Proxima Care Partners"
-        description="Learn about Proxima Care Partners — our mission, leadership team, core values, and commitment to elevating healthcare finance with clinical precision and unwavering integrity."
+        description="Learn about Proxima Care Partners - our mission, leadership team, core values, and commitment to elevating healthcare finance with clinical precision and unwavering integrity."
         keywords="about Proxima Care Partners, healthcare billing company, medical billing team, RCM experts, HIPAA compliance company"
         canonical="https://www.proximacarepartners.com/about"
       />
@@ -237,7 +237,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values — Enhanced */}
+      {/* Values - Enhanced */}
       <section className="py-28 bg-[#030d1a] relative overflow-hidden" ref={valuesRef.ref}>
         {/* Background texture */}
         <div className="absolute inset-0 pointer-events-none">
@@ -264,7 +264,7 @@ export default function AboutPage() {
               Principles That Drive Every Decision
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}>
-              Our values aren't wall art — they're the operating system behind every claim we file, every audit we run, and every dollar we recover for your practice.
+              Our values aren't wall art - they're the operating system behind every claim we file, every audit we run, and every dollar we recover for your practice.
             </p>
           </div>
 
@@ -274,7 +274,7 @@ export default function AboutPage() {
               {
                 icon: 'shield',
                 title: 'Clinical Precision',
-                desc: 'We apply the same rigor a surgeon uses in an OR to every revenue cycle audit — methodical, evidence-based, and zero-tolerance for error.',
+                desc: 'We apply the same rigor a surgeon uses in an OR to every revenue cycle audit - methodical, evidence-based, and zero-tolerance for error.',
                 accent: 'teal',
                 tag: '99% clean claim rate',
                 delay: 100,
@@ -301,7 +301,7 @@ export default function AboutPage() {
               {
                 icon: 'verified_user',
                 title: 'Security by Design',
-                desc: 'HIPAA compliance is not a checkbox for us — it is baked into every workflow, every tool, and every communication channel we operate.',
+                desc: 'HIPAA compliance is not a checkbox for us - it is baked into every workflow, every tool, and every communication channel we operate.',
                 accent: 'navy',
                 tag: 'HIPAA · SOC 2 · AES-256',
                 delay: 340,
@@ -311,7 +311,7 @@ export default function AboutPage() {
               {
                 icon: 'trending_up',
                 title: 'Results Accountability',
-                desc: "We tie our success to yours. Our KPIs are your KPIs — collection rate, days in AR, denial rate. If you don't grow, neither do we.",
+                desc: "We tie our success to yours. Our KPIs are your KPIs - collection rate, days in AR, denial rate. If you don't grow, neither do we.",
                 accent: 'teal',
                 tag: '+15–25% avg. revenue lift',
                 delay: 420,

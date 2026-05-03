@@ -77,7 +77,7 @@ export default function Advantage() {
             className="text-slate-400 mx-auto max-w-xl leading-relaxed"
             style={{ fontFamily: 'Inter, sans-serif', fontSize: '17px' }}
           >
-            We are more than a billing service — we are a strategic financial partner dedicated to the long-term viability and growth of your practice.
+            We are more than a billing service - we are a strategic financial partner dedicated to the long-term viability and growth of your practice.
           </p>
         </div>
 

@@ -6,7 +6,7 @@ const services = [
     icon: 'account_balance_wallet',
     title: 'End-to-End Revenue Cycle Management',
     description:
-      'Comprehensive oversight of your entire financial ecosystem — from patient registration and eligibility verification through charge capture, claims submission, payment posting, and final reconciliation. Our dedicated RCM specialists become an extension of your team, delivering measurable results from day one.',
+      'Comprehensive oversight of your entire financial ecosystem - from patient registration and eligibility verification through charge capture, claims submission, payment posting, and final reconciliation. Our dedicated RCM specialists become an extension of your team, delivering measurable results from day one.',
     features: ['Eligibility Verification', 'Charge Capture', 'Payment Posting', 'AR Follow-Up'],
     span: 'md:col-span-2',
     accent: true,

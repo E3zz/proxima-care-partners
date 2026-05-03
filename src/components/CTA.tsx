@@ -66,7 +66,7 @@ export default function CTA() {
               className="text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: '1.7' }}
             >
-              Not sure where to start? Our billing specialists will assess your current workflow, identify revenue gaps, and walk you through a tailored plan — at no cost and no commitment.
+              Not sure where to start? Our billing specialists will assess your current workflow, identify revenue gaps, and walk you through a tailored plan - at no cost and no commitment.
             </p>
 
             {/* Buttons */}

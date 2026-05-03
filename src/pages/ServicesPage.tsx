@@ -19,7 +19,7 @@ const services = [
   {
     icon: 'account_balance_wallet',
     title: 'End-to-End Revenue Cycle Management',
-    description: 'Comprehensive oversight of your entire financial ecosystem — from patient registration and eligibility verification through charge capture, claims submission, payment posting, and final reconciliation.',
+    description: 'Comprehensive oversight of your entire financial ecosystem - from patient registration and eligibility verification through charge capture, claims submission, payment posting, and final reconciliation.',
     details: [
       'Patient registration & demographic verification',
       'Insurance eligibility & benefits verification',
@@ -93,7 +93,7 @@ const services = [
   {
     icon: 'assignment_turned_in',
     title: 'Prior Authorization',
-    description: 'We manage the entire prior authorization process on your behalf — submitting requests, following up with payers, and resolving delays before they impact patient care or revenue.',
+    description: 'We manage the entire prior authorization process on your behalf - submitting requests, following up with payers, and resolving delays before they impact patient care or revenue.',
     details: [
       'Auth request submission',
       'Payer follow-up & escalation',
@@ -117,7 +117,7 @@ const services = [
   {
     icon: 'event_available',
     title: 'Patient Scheduling & Intake',
-    description: 'Our patient scheduling and intake services streamline front-end workflows — from appointment booking and insurance verification to registration — reducing administrative burden and improving collections from day one.',
+    description: 'Our patient scheduling and intake services streamline front-end workflows - from appointment booking and insurance verification to registration - reducing administrative burden and improving collections from day one.',
     details: [
       'Appointment scheduling',
       'Insurance verification at intake',
@@ -153,7 +153,7 @@ const services = [
   {
     icon: 'account_balance',
     title: 'In-House Collections',
-    description: 'Our compliant, patient-friendly collections approach maximizes recovery of outstanding balances while preserving the patient relationship — using proven communication strategies and flexible payment options.',
+    description: 'Our compliant, patient-friendly collections approach maximizes recovery of outstanding balances while preserving the patient relationship - using proven communication strategies and flexible payment options.',
     details: [
       'FDCPA-compliant collections',
       'Balance follow-up workflows',
@@ -165,7 +165,7 @@ const services = [
   {
     icon: 'receipt_long',
     title: 'Patient Statements',
-    description: 'Clear, compliant, and patient-friendly billing statements delivered via mail or digital channels. We handle the full patient billing lifecycle — from statement generation to final payment.',
+    description: 'Clear, compliant, and patient-friendly billing statements delivered via mail or digital channels. We handle the full patient billing lifecycle - from statement generation to final payment.',
     details: [
       'Statement design & generation',
       'Paper & electronic delivery',
@@ -189,7 +189,7 @@ const services = [
   {
     icon: 'rule',
     title: 'Coding QA & Audit',
-    description: 'Our certified coding quality assurance team performs regular audits of your coded encounters to ensure accuracy, compliance, and maximum appropriate reimbursement — before and after claim submission.',
+    description: 'Our certified coding quality assurance team performs regular audits of your coded encounters to ensure accuracy, compliance, and maximum appropriate reimbursement - before and after claim submission.',
     details: [
       'Pre-bill coding audits',
       'Post-payment chart reviews',

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5efff",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "primary-fixed": "#d7e2ff",
+                    "on-tertiary-container": "#239e91",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-surface-variant": "#45474d",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c5c6cd",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#828da7",
+                    "inverse-primary": "#bbc6e2",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#101b30",
+                    "tertiary": "#001512",
+                    "on-surface": "#031d34",
+                    "on-secondary-container": "#48617e",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-background": "#031d34",
+                    "primary": "#051125",
+                    "background": "#f8f9ff",
+                    "outline": "#75777d",
+                    "surface-container-highest": "#d1e4ff",
+                    "on-primary-fixed-variant": "#3c475d",
+                    "on-secondary-fixed": "#001d36",
+                    "inverse-surface": "#1b324a",
+                    "primary-fixed-dim": "#bbc6e2",
+                    "primary-container": "#1b263b",
+                    "inverse-on-surface": "#e9f1ff",
+                    "tertiary-fixed": "#89f5e7",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "surface-dim": "#c5dcfb",
+                    "surface-variant": "#d1e4ff",
+                    "secondary-container": "#c2dcff",
+                    "surface-container-high": "#dbe9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#00201d",
+                    "surface-tint": "#545e76",
+                    "tertiary-container": "#002c28",
+                    "surface-container-low": "#eef4ff",
+                    "secondary": "#47607e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "stack-xs": "4px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "h1": ["Manrope"],
+                    "button": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h3": ["Manrope"]
+            },
+            "fontSize": {
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "button": ["15px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-slate-200">
+<div class="flex justify-between items-center h-20 px-8 max-w-[1200px] mx-auto w-full">
+<div class="text-xl font-bold text-slate-900 tracking-tighter font-h3">
+                Proxima Care Partners
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-manrope text-sm font-semibold tracking-tight text-slate-600 hover:text-slate-900 transition-opacity hover:opacity-80" href="#">Home</a>
+<a class="font-manrope text-sm font-semibold tracking-tight text-slate-600 hover:text-slate-900 transition-opacity hover:opacity-80" href="#">Services</a>
+<a class="font-manrope text-sm font-semibold tracking-tight text-slate-600 hover:text-slate-900 transition-opacity hover:opacity-80" href="#">Specialties</a>
+<a class="font-manrope text-sm font-semibold tracking-tight text-slate-600 hover:text-slate-900 transition-opacity hover:opacity-80" href="#">About Us</a>
+<a class="font-manrope text-sm font-semibold tracking-tight text-teal-600 border-b-2 border-teal-600 pb-1" href="#">Contact</a>
+<button class="bg-teal-600 text-white px-6 py-3 rounded font-button text-button hover:opacity-90 transition-all">Schedule a Meeting</button>
+</div>
+<button class="md:hidden text-slate-900">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Floating Anchors) -->
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 bg-slate-900 flex flex-col z-40 w-12 hover:w-48 overflow-hidden transition-all group rounded-r-lg shadow-xl divide-y divide-slate-700">
+<div class="flex items-center gap-4 px-3 py-4 bg-teal-600 text-white cursor-pointer transition-transform hover:translate-x-1">
+<span class="material-symbols-outlined shrink-0" data-icon="analytics">analytics</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap">Request Free Audit</span>
+</div>
+<div class="flex items-center gap-4 px-3 py-4 bg-slate-900 text-slate-300 cursor-pointer transition-transform hover:translate-x-1 hover:bg-teal-500 hover:text-white">
+<span class="material-symbols-outlined shrink-0" data-icon="calendar_today">calendar_today</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap">Schedule a Meeting</span>
+</div>
+</aside>
+<main class="max-w-[1200px] mx-auto px-8 py-20">
+<!-- Hero Section -->
+<section class="mb-section-gap">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-tertiary-container mb-4 block uppercase tracking-widest">Global Support</span>
+<h1 class="font-h1 text-h1 text-primary mb-6">Expert Revenue Cycle Partnership</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-8">Bridging the gap between clinical excellence and financial precision. Our team is ready to optimize your healthcare operations with HIPAA-compliant expertise.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-white border border-slate-200 rounded-lg">
+<span class="material-symbols-outlined text-teal-600 mb-2" data-icon="location_on">location_on</span>
+<h3 class="font-h3 text-body-md font-bold mb-1">Corporate HQ</h3>
+<p class="text-body-sm text-secondary">750 N St Paul St<br/>Dallas, TX 75201</p>
+</div>
+<div class="p-6 bg-white border border-slate-200 rounded-lg">
+<span class="material-symbols-outlined text-teal-600 mb-2" data-icon="call">call</span>
+<h3 class="font-h3 text-body-md font-bold mb-1">Direct Line</h3>
+<p class="text-body-sm text-secondary">+1 (800) 555-0192<br/>Mon-Fri, 8am-6pm CST</p>
+</div>
+<div class="p-6 bg-white border border-slate-200 rounded-lg">
+<span class="material-symbols-outlined text-teal-600 mb-2" data-icon="mail">mail</span>
+<h3 class="font-h3 text-body-md font-bold mb-1">Inquiries</h3>
+<p class="text-body-sm text-secondary">partners@proxima.care<br/>HIPAA Secure Gateway</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<img alt="Corporate Office" class="rounded-lg shadow-xl object-cover w-full h-[500px]" data-alt="A clean, high-end professional medical administrative office interior with floor-to-ceiling windows overlooking a modern city skyline. The lighting is soft and bright, emphasizing a clinical yet welcoming atmosphere. A sleek reception desk made of white marble and glass sits in the foreground. The color palette consists of whites, soft greys, and deep navy blue accents, reflecting a sense of security and precision." src="https://lh3.googleusercontent.com/aida/ADBb0ujFUpivT0t32YkXMliuDpA4Fe5qXprYti4NGI1mDBqnuRN2-QeoRfEMwHD3BsZPiRQsEyi8Uo8D6V3bflPXfJAOGgZYAYUj-wqBzRyzIbG09V7Eac-Kj18Tf8bGBY9lJufrUMPqsp7f4jIVYWfHf5Y6EW0coI3B28FeAV8lfxsFFVXaXQAerKywbDIALnXwzlplgpIuzuXPON9cn6_wJGyzUedNh0MJR6E90cQjK_etfgQoZQo4eha0KQ"/>
+<div class="absolute -bottom-8 -left-8 bg-primary-container text-white p-8 rounded-lg shadow-2xl max-w-xs">
+<span class="material-symbols-outlined text-teal-400 text-4xl mb-4" data-icon="verified_user">verified_user</span>
+<p class="font-h3 text-body-md mb-2">100% HIPAA Compliant</p>
+<p class="text-body-sm text-on-primary-container">Secure communication channels for all patient data and financial audits.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Bento Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-section-gap">
+<!-- Contact Form (Left) -->
+<div class="lg:col-span-7 bg-white border border-slate-200 p-10 rounded-lg">
+<h2 class="font-h2 text-h2 text-primary mb-2">Direct Inquiry</h2>
+<p class="text-secondary mb-10">Submit your details and our specialist team will reach out within 24 hours.</p>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Full Name</label>
+<input class="w-full px-4 py-3 border border-slate-200 rounded focus:ring-2 focus:ring-primary-container focus:border-primary transition-all outline-none" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Organization</label>
+<input class="w-full px-4 py-3 border border-slate-200 rounded focus:ring-2 focus:ring-primary-container focus:border-primary transition-all outline-none" placeholder="Healthcare Partners Inc." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Email Address</label>
+<input class="w-full px-4 py-3 border border-slate-200 rounded focus:ring-2 focus:ring-primary-container focus:border-primary transition-all outline-none" placeholder="john@example.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Service Area</label>
+<select class="w-full px-4 py-3 border border-slate-200 rounded focus:ring-2 focus:ring-primary-container focus:border-primary transition-all outline-none">
+<option>Revenue Cycle Management</option>
+<option>Credentialing Services</option>
+<option>Audit &amp; Compliance</option>
+<option>Reporting &amp; Analytics</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Message</label>
+<textarea class="w-full px-4 py-3 border border-slate-200 rounded focus:ring-2 focus:ring-primary-container focus:border-primary transition-all outline-none" placeholder="How can we assist with your revenue cycle?" rows="4"></textarea>
+</div>
+<button class="w-full bg-teal-600 text-white font-button py-4 rounded hover:bg-teal-700 transition-colors shadow-md" type="submit">Submit Secured Inquiry</button>
+</form>
+</div>
+<!-- Calendar Widget (Right) -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<div class="bg-primary-container text-white p-8 rounded-lg shadow-lg">
+<h2 class="font-h3 text-h3 mb-2">Schedule a Meeting</h2>
+<p class="text-on-primary-container text-body-sm mb-8">Select a preferred time for a 30-minute discovery call with our consultants.</p>
+<div class="bg-white text-slate-900 rounded-lg p-6">
+<!-- Calendar UI Mockup -->
+<div class="flex justify-between items-center mb-6">
+<span class="font-bold font-h3 text-body-md">October 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined cursor-pointer hover:text-teal-600" data-icon="chevron_left">chevron_left</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-teal-600" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="calendar-grid text-center text-xs font-bold text-slate-400 mb-4">
+<div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+</div>
+<div class="calendar-grid text-center gap-y-2 text-sm">
+<div class="py-2 text-slate-300">29</div><div class="py-2 text-slate-300">30</div><div class="py-2">1</div><div class="py-2">2</div><div class="py-2">3</div><div class="py-2">4</div><div class="py-2">5</div>
+<div class="py-2">6</div><div class="py-2">7</div><div class="py-2">8</div><div class="py-2">9</div><div class="py-2">10</div><div class="py-2">11</div><div class="py-2">12</div>
+<div class="py-2">13</div><div class="py-2">14</div><div class="py-2 bg-teal-600 text-white rounded-full font-bold">15</div><div class="py-2">16</div><div class="py-2">17</div><div class="py-2">18</div><div class="py-2">19</div>
+<div class="py-2">20</div><div class="py-2">21</div><div class="py-2">22</div><div class="py-2">23</div><div class="py-2">24</div><div class="py-2">25</div><div class="py-2">26</div>
+</div>
+<div class="mt-8">
+<label class="font-label-caps text-slate-500 uppercase mb-3 block">Available Times (CST)</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 border border-slate-200 rounded hover:border-teal-600 hover:text-teal-600 transition-all text-xs font-semibold">09:00 AM</button>
+<button class="py-2 border border-slate-200 rounded hover:border-teal-600 hover:text-teal-600 transition-all text-xs font-semibold">11:30 AM</button>
+<button class="py-2 border border-teal-600 bg-teal-50 text-teal-600 rounded text-xs font-semibold">02:00 PM</button>
+<button class="py-2 border border-slate-200 rounded hover:border-teal-600 hover:text-teal-600 transition-all text-xs font-semibold">04:30 PM</button>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-4 bg-teal-500 text-white font-button rounded hover:bg-teal-400 transition-colors">Confirm Slot</button>
+</div>
+<div class="bg-surface-container border border-slate-200 p-6 rounded-lg">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-teal-600" data-icon="contact_support">contact_support</span>
+<div>
+<h4 class="font-h3 text-body-md text-primary mb-1">Need Urgent Help?</h4>
+<p class="text-body-sm text-secondary">Our emergency audit team is available for critical compliance issues 24/7.</p>
+<a class="text-teal-600 font-bold text-sm mt-2 inline-block" href="#">Contact Emergency Desk →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Section -->
+<section class="rounded-lg overflow-hidden border border-slate-200 shadow-sm">
+<div class="h-96 w-full bg-slate-100 flex items-center justify-center relative">
+<img alt="Location Map" class="w-full h-full object-cover grayscale contrast-125 opacity-40" data-alt="A sophisticated map rendering of Dallas, Texas, with a clean and professional dark aesthetic. The map features minimalist linework for streets and landmarks, using a palette of deep navy, slate greys, and teal highlights. A glowing marker indicates the Proxima Care Partners headquarters, surrounded by a subtle circular radar pulse to emphasize its central urban location." data-location="Dallas, Texas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRyl4erai06yes8w3ZYgbmD7Y3eMLXA6xGUAT_TH31SPWAKCWNdn_DUs5wUVHkxTbxP1Gsng3vJ3txBdyXMghnK3ek3jLJTsO1PhIJD3bL2uMz5FBtdCTSvxYDR8HyIo1FnHthX5N7SDcwOH4tU5xnQ4Jgma55J45P3X3H4XJ76YpZyKrkJZIxUeIMS33lRKVmQoiGu-4h1HiC6b75pbXt_sIxXwwZg14jhgk9lSng0bL0STm8iwzaezD_FtWwfvCraWfObpS81Q"/>
+<div class="absolute bg-white p-6 rounded shadow-xl border border-slate-200 flex flex-col items-center">
+<span class="material-symbols-outlined text-teal-600 text-4xl mb-2" data-icon="location_pin" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_pin</span>
+<p class="font-bold text-slate-900">Proxima Care Partners HQ</p>
+<p class="text-xs text-slate-500">Downtown Dallas Business District</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200 w-full py-12">
+<div class="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="space-y-4">
+<div class="text-lg font-bold text-slate-900 font-h3">Proxima Care Partners</div>
+<p class="font-manrope text-sm text-slate-500 leading-relaxed">Providing high-performance revenue cycle solutions for hospitals and private practices nationwide.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 font-manrope text-sm uppercase tracking-wider">Services</h4>
+<ul class="space-y-2">
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">Billing &amp; Coding</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">Audit Recovery</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">Provider Enrollment</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 font-manrope text-sm uppercase tracking-wider">Company</h4>
+<ul class="space-y-2">
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">About Us</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">Compliance</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 underline decoration-teal-500/30 underline-offset-4 transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 font-manrope text-sm uppercase tracking-wider">Connect</h4>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-teal-600" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+<a class="text-slate-500 hover:text-teal-600" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+</div>
+<p class="mt-6 font-manrope text-sm text-slate-500">© 2024 Proxima Care Partners. HIPAA Compliant.</p>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c5c6cd",
+                      "on-primary-fixed": "#101b30",
+                      "tertiary-fixed-dim": "#6bd8cb",
+                      "tertiary-fixed": "#89f5e7",
+                      "primary-fixed": "#d7e2ff",
+                      "on-surface": "#031d34",
+                      "on-surface-variant": "#45474d",
+                      "surface-tint": "#545e76",
+                      "surface-dim": "#c5dcfb",
+                      "secondary-fixed": "#d1e4ff",
+                      "primary-fixed-dim": "#bbc6e2",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#eef4ff",
+                      "tertiary-container": "#002c28",
+                      "on-secondary-fixed": "#001d36",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary-fixed": "#00201d",
+                      "on-secondary-container": "#48617e",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#afc9ea",
+                      "inverse-primary": "#bbc6e2",
+                      "tertiary": "#001512",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#f8f9ff",
+                      "surface-container-highest": "#d1e4ff",
+                      "on-background": "#031d34",
+                      "primary": "#051125",
+                      "inverse-surface": "#1b324a",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#2f4865",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#c2dcff",
+                      "surface": "#f8f9ff",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#828da7",
+                      "on-primary-fixed-variant": "#3c475d",
+                      "primary-container": "#1b263b",
+                      "inverse-on-surface": "#e9f1ff",
+                      "outline": "#75777d",
+                      "surface-container-high": "#dbe9ff",
+                      "secondary": "#47607e",
+                      "surface-container": "#e5efff",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d1e4ff",
+                      "on-tertiary-fixed-variant": "#005049",
+                      "on-tertiary-container": "#239e91"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-md": "24px",
+                      "stack-xs": "4px",
+                      "section-gap": "80px",
+                      "container-max": "1200px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "h2": ["Manrope"],
+                      "h3": ["Manrope"],
+                      "h1": ["Manrope"],
+                      "button": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "button": ["15px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .specialty-card:hover .icon-bg {
+            transform: scale(1.05);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container">
+<!-- TopNavBar -->
+<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-8 max-w-[1200px] mx-auto w-full">
+<div class="flex items-center gap-3">
+<img alt="Proxima Care Partners Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkuXIe36EC4Y25aFAjH1lWD3Vjh47LkTAX_jGzQs_qqEP_Q5ZfgSWE-EBTp_QQ-bnZ5I5B7CZ1uIsGVuHHHQWTtTscKAPjs6byY64SafgpJclkpPfCaNZfqWANZyj0CizhHO5JL0cdei3drf_8ig7w58WoOBvm6dpPk8a7cB2-HwBS6TK8e4fa7xfsDgXCkiN-ZIz25uuiAI-xmnCI1Zu_-fRgqsvaHErvdQLaAFCSl92D1JUFbJPSMBhPtW15Lu_nyNCJLT_r_DQ"/>
+<span class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter">Proxima Care Partners</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-manrope text-sm font-semibold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all duration-200 ease-in-out" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all duration-200 ease-in-out" href="#">Services</a>
+<a class="text-teal-600 dark:text-teal-400 border-b-2 border-teal-600 pb-1 transition-all duration-200 ease-in-out" href="#">Specialties</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all duration-200 ease-in-out" href="#">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all duration-200 ease-in-out" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2.5 rounded-sm bg-primary text-white font-button text-button hover:opacity-80 transition-opacity">Schedule a Meeting</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="flex flex-col z-40 w-12 hover:w-48 overflow-hidden transition-all group fixed left-0 top-1/2 -translate-y-1/2 rounded-r-lg bg-slate-900 dark:bg-black divide-y divide-slate-700 shadow-xl">
+<div class="bg-teal-600 text-white flex items-center h-14 cursor-pointer group-hover:px-4 transition-all">
+<span class="material-symbols-outlined min-w-[48px] flex justify-center" data-icon="analytics">analytics</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Request Free Audit</span>
+</div>
+<div class="bg-slate-900 text-slate-300 flex items-center h-14 cursor-pointer hover:bg-teal-500 hover:text-white transition-all group-hover:px-4">
+<span class="material-symbols-outlined min-w-[48px] flex justify-center" data-icon="calendar_today">calendar_today</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Schedule a Meeting</span>
+</div>
+</aside>
+<main class="max-w-[1200px] mx-auto px-8 pt-20 pb-section-gap">
+<!-- Hero Section -->
+<section class="mb-20 text-center max-w-3xl mx-auto">
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container/30 px-3 py-1 rounded-full mb-4 inline-block">Revenue Cycle Management</span>
+<h1 class="font-h1 text-h1 text-primary mb-6">Expertise Across All <span class="text-teal-600">Medical Specialties</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We provide tailored billing solutions designed for the unique coding complexities and compliance requirements of every major healthcare specialty.</p>
+</section>
+<!-- Refined Specialty Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Internal Medicine -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-teal-600">stethoscope</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Internal Medicine</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Comprehensive billing management for primary care, navigating complex E/M coding and chronic care requirements.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Chronic Care Management</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Value-Based Care Models</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Cardiology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-red-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-red-500">cardiology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Cardiology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Expertise in diagnostic imaging and interventional procedure coding to maximize revenue cycle efficiency.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>EKG &amp; Stress Testing</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Cardiac Catheterization</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Radiology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-blue-600">radiology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Radiology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Precision billing for diagnostic and technical components, handling complex modality modifiers and rules.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>MRI/CT Imaging</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Interventional Radiology</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Gastroenterology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-orange-600">medical_services</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Gastroenterology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Endoscopy services and preventative screening compliance. We optimize reimbursement for various scopes.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Colonoscopy Screening</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Endoscopic Coding</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Nephrology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-indigo-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-indigo-600">nephrology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Nephrology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Complex dialysis reimbursement management. Expert handling of MCP billing and home dialysis documentation.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>ESRD Facility Billing</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Home Dialysis Support</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Dermatology & Aesthetics -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-teal-600">dermatology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Dermatology &amp; Aesthetics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">High-revenue cosmetic and insurance-based coding. We ensure a clear distinction between medically necessary and elective procedures.</p>
+<ul class="space-y-2 mb-8">
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Mohs Surgery</li>
+<li class="flex items-center gap-2 text-on-surface-variant text-body-sm"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>Cosmetic Procedures</li>
+</ul>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Hidden Specialties Container -->
+<div class="hidden contents" id="more-specialties">
+<!-- Pediatrics -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-pink-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-pink-500">child_care</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Pediatrics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Navigating immunization schedules and well-child visit coding with accuracy and pediatric-specific modifiers.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Orthopedics -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-slate-700">skeleton</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Orthopedics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Surgical modifiers and physical therapy billing optimization for multi-provider orthopedic practices.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Emergency Medicine -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-red-600">emergency</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Emergency Medicine</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">High-volume billing solutions for urgent care and emergency departments with facility coding expertise.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Neurology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-purple-600">neurology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Neurology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Expertise in sleep studies, EEG, and complex neurological testing reimbursement and documentation.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Psychiatry -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-emerald-600">psychology</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Psychiatry</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Telehealth compliance and behavioral health coding for outpatient and facility settings with custom logic.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Oncology -->
+<div class="group specialty-card bg-white border border-outline-variant rounded-xl p-8 transition-all hover:shadow-xl hover:border-teal-500/30 flex flex-col h-full">
+<div class="icon-bg w-14 h-14 rounded-full bg-cyan-50 flex items-center justify-center mb-6 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl text-cyan-600">medication</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Oncology</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">Specialized infusion billing, chemotherapy drug waste management, and clinical trial coding support.</p>
+<button class="text-teal-600 font-button text-sm flex items-center gap-2 hover:translate-x-1 transition-transform mt-auto">
+                Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div></section><div class="flex justify-center mt-12 mb-16">
+<button class="group flex items-center gap-2 text-primary font-button px-6 py-3 border border-outline-variant rounded-full hover:bg-surface-variant transition-colors" id="toggle-specialties">
+<span>View More Specialties</span>
+<span class="material-symbols-outlined transition-transform duration-300" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+<script>
+    document.getElementById('toggle-specialties').addEventListener('click', function() {
+        const moreSpecialties = document.getElementById('more-specialties');
+        const icon = this.querySelector('.material-symbols-outlined');
+        const text = this.querySelector('span');
+        
+        if (moreSpecialties.classList.contains('hidden')) {
+            moreSpecialties.classList.remove('hidden');
+            text.textContent = 'View Less Specialties';
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            moreSpecialties.classList.add('hidden');
+            text.textContent = 'View More Specialties';
+            icon.style.transform = 'rotate(0deg)';
+            // Scroll back up to the grid top if needed
+            document.querySelector('main > section.grid').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>
+<!-- CTA Section -->
+<section class="mt-section-gap bg-surface-container rounded-2xl p-12 text-center border border-outline-variant/30 relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-h2 text-h2 text-primary mb-4">Don't see your specialty?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">Our systems are highly configurable and our billing experts possess a broad range of experience across clinical settings. Let's discuss your specific practice needs.</p>
+<div class="flex flex-col md:flex-row justify-center gap-4">
+<button class="bg-teal-600 text-white font-button px-8 py-4 rounded-sm hover:bg-teal-700 transition-colors shadow-lg shadow-teal-600/20">Request a Custom Audit</button>
+<button class="border border-primary text-primary font-button px-8 py-4 rounded-sm hover:bg-primary/5 transition-colors">Schedule a Meeting</button>
+</div>
+</div>
+<!-- Decorative Pattern -->
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]" data-icon="medical_services">medical_services</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 w-full py-12">
+<div class="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-slate-900 dark:text-white mb-4">Proxima Care Partners</div>
+<p class="font-manrope text-sm text-slate-500 mb-6">Expert medical billing and revenue cycle management solutions for modern healthcare providers.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="facebook">facebook</span></a>
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span></a>
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="close">close</span></a>
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="group">group</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-manrope text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Quick Links</h4>
+<ul class="space-y-3 font-manrope text-sm">
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Terms of Service</a></li>
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-manrope text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Compliance</h4>
+<ul class="space-y-3 font-manrope text-sm">
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">HIPAA Compliance</a></li>
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Security</a></li>
+<li><a class="text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Compliance Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-manrope text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Contact</h4>
+<p class="font-manrope text-sm text-slate-500">
+                123 Medical Plaza, Suite 500<br/>
+                Houston, TX 77002<br/><br/>
+<span class="font-bold">P:</span> (800) 555-0199<br/>
+<span class="font-bold">E:</span> solutions@proximacare.com
+            </p>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-8 mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+<p class="font-manrope text-sm text-slate-500 text-center">© 2024 Proxima Care Partners. HIPAA Compliant.</p>
+</div>
+</footer>
+</body></html>

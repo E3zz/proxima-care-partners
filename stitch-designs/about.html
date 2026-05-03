@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#3c475d",
+                    "primary-container": "#1b263b",
+                    "outline": "#75777d",
+                    "inverse-on-surface": "#e9f1ff",
+                    "surface-container-high": "#dbe9ff",
+                    "secondary": "#47607e",
+                    "surface-container": "#e5efff",
+                    "surface-variant": "#d1e4ff",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#239e91",
+                    "primary": "#051125",
+                    "on-background": "#031d34",
+                    "inverse-surface": "#1b324a",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "secondary-container": "#c2dcff",
+                    "surface": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#828da7",
+                    "tertiary-container": "#002c28",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001d36",
+                    "on-tertiary-fixed": "#00201d",
+                    "surface-bright": "#f8f9ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#48617e",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "inverse-primary": "#bbc6e2",
+                    "tertiary": "#001512",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d1e4ff",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed": "#101b30",
+                    "tertiary-fixed": "#89f5e7",
+                    "primary-fixed": "#d7e2ff",
+                    "on-surface-variant": "#45474d",
+                    "on-surface": "#031d34",
+                    "surface-tint": "#545e76",
+                    "surface-dim": "#c5dcfb",
+                    "secondary-fixed": "#d1e4ff",
+                    "primary-fixed-dim": "#bbc6e2",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#eef4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "stack-xs": "4px",
+                    "section-gap": "80px",
+                    "container-max": "1200px",
+                    "base": "8px",
+                    "stack-sm": "12px",
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h3": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "button": ["Inter"],
+                    "h2": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "button": ["15px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- Top Navigation Bar -->
+<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-50 transition-all duration-200 ease-in-out">
+<div class="flex justify-between items-center h-20 px-8 max-w-[1200px] mx-auto w-full">
+<div class="text-xl font-bold text-slate-900 dark:text-white tracking-tighter">
+                Proxima Care Partners
+            </div>
+<nav class="hidden md:flex items-center space-x-8 font-manrope text-sm font-semibold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:opacity-80 transition-opacity" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:opacity-80 transition-opacity" href="#">Specialties</a>
+<a class="text-teal-600 dark:text-teal-400 border-b-2 border-teal-600 pb-1" href="#">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:opacity-80 transition-opacity" href="#">Contact</a>
+</nav>
+<div class="flex items-center space-x-4">
+<a class="px-6 py-2 bg-[#0D9488] text-white rounded font-button text-button hover:bg-[#0D9488]/90 transition-all" href="#">Schedule a Meeting</a>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col z-40 w-12 hover:w-48 overflow-hidden transition-all group bg-slate-900 dark:bg-black fixed left-0 top-1/2 -translate-y-1/2 rounded-r-lg shadow-xl divide-y divide-slate-700">
+<a class="flex items-center h-12 bg-slate-900 text-slate-300 hover:bg-teal-500 transition-transform" href="#">
+<span class="material-symbols-outlined px-3">analytics</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity ml-2">Request Free Audit</span>
+</a>
+<a class="flex items-center h-12 bg-teal-600 text-white hover:bg-teal-500 transition-transform" href="#">
+<span class="material-symbols-outlined px-3">calendar_today</span>
+<span class="font-manrope text-xs font-bold uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity ml-2">Schedule a Meeting</span>
+</a>
+</aside>
+<main>
+<!-- Hero Section -->
+<section class="py-section-gap bg-surface-container-lowest overflow-hidden">
+<div class="max-w-[1200px] mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+<div class="space-y-stack-md">
+<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-caps font-label-caps uppercase">Our Mission</span>
+<h1 class="font-h1 text-h1 text-primary leading-tight">Elevating Healthcare Finance with Clinical Precision</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Proxima Care Partners bridge the gap between medical excellence and financial integrity, ensuring healthcare providers can focus on patient care while we optimize their revenue ecosystem.
+                    </p>
+<div class="flex items-center gap-stack-sm pt-stack-sm">
+<button class="px-gutter py-3 bg-[#0D9488] text-white rounded font-button text-button hover:opacity-90 transition-all">Request Free Audit</button>
+<button class="px-gutter py-3 border border-primary text-primary rounded font-button text-button hover:bg-primary/5 transition-all">Our Process</button>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square bg-surface-variant rounded-lg overflow-hidden border border-outline-variant shadow-lg relative z-10">
+<img alt="Healthcare Financial Analytics" class="w-full h-full object-cover" data-alt="A sophisticated digital interface displaying healthcare financial metrics and data visualizations on a high-resolution screen in a modern hospital administrator's office. The scene is illuminated by cool, clean clinical lighting with soft blue and teal highlights reflecting off polished surfaces. The overall aesthetic is professional and technologically advanced, mirroring the intersection of medicine and finance. The background is softly blurred, showing a contemporary corporate environment with minimalist design elements." src="https://lh3.googleusercontent.com/aida/ADBb0ujFUpivT0t32YkXMliuDpA4Fe5qXprYti4NGI1mDBqnuRN2-QeoRfEMwHD3BsZPiRQsEyi8Uo8D6V3bflPXfJAOGgZYAYUj-wqBzRyzIbG09V7Eac-Kj18Tf8bGBY9lJufrUMPqsp7f4jIVYWfHf5Y6EW0coI3B28FeAV8lfxsFFVXaXQAerKywbDIALnXwzlplgpIuzuXPON9cn6_wJGyzUedNh0MJR6E90cQjK_etfgQoZQo4eha0KQ"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded shadow-xl border border-slate-100 z-20 hidden md:block">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-teal-600">verified</span>
+</div>
+<div>
+<p class="font-h3 text-h3 text-primary mb-0 leading-none">100%</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">HIPAA Compliant</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-stack-lg bg-primary">
+<div class="max-w-[1200px] mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-stack-lg text-center">
+<div class="space-y-stack-xs border-r border-slate-700 last:border-0">
+<h2 class="font-h1 text-h1 text-teal-400">10+</h2>
+<p class="font-body-md text-on-primary-container uppercase tracking-widest text-sm">Years of Experience</p>
+</div>
+<div class="space-y-stack-xs border-r border-slate-700 last:border-0">
+<h2 class="font-h1 text-h1 text-teal-400">20+</h2>
+<p class="font-body-md text-on-primary-container uppercase tracking-widest text-sm">Active USA Clients</p>
+</div>
+<div class="space-y-stack-xs">
+<h2 class="font-h1 text-h1 text-teal-400">$250M+</h2>
+<p class="font-body-md text-on-primary-container uppercase tracking-widest text-sm">Revenue Optimized</p>
+</div>
+</div>
+</section>
+<!-- Leadership Section -->
+<section class="py-section-gap">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="text-center mb-stack-lg">
+<h2 class="font-h2 text-h2 text-primary">Strategic Leadership</h2>
+<div class="w-20 h-1 bg-teal-600 mx-auto mt-4"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-stack-sm max-w-2xl mx-auto">
+                        Guided by experts in both clinical administration and corporate finance.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Team Member 1 -->
+<div class="group border border-outline-variant bg-white p-6 rounded transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/5] bg-slate-100 mb-stack-sm rounded-lg overflow-hidden relative grayscale group-hover:grayscale-0 transition-all">
+<img alt="Founder &amp; CEO" class="w-full h-full object-cover" data-alt="A professional headshot of a senior male corporate executive in a crisp navy blue suit and white shirt, looking confident and approachable. The background is a blurred, high-end modern office with soft natural window lighting creating a bright and clean professional atmosphere. The lighting is soft and flattering, emphasizing a mood of authority and trust. The overall aesthetic is minimalist and high-contrast Corporate Modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-oLMmAo5GtjYqrTV_XAW17f50obVOmhGg2q2wcvbrHZe5FiYU_IJzuBnZDUsH5BrJGZhPXL5m7vUfxn2uPKTabyDIDxF4KWpmGN_AvHA_e1Wc4xayKEp6hNkklkAV2UiEQx2kSMtRa0uHywOMh2EC-pnHqSrHOLVbGb77yKk2GGZJL7YZILN1H82FioLXT5vKIMoq2MT0R_38peyc2i3R7l2rOBr22Gk8i-_Pn1cZKtDFX7jJ06h8JJymkDmIXVR4GCGH82f-810"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary">David Chen, M.D.</h3>
+<p class="font-body-sm text-teal-600 font-semibold mb-stack-xs uppercase tracking-wider">Chief Executive Officer</p>
+<p class="font-body-sm text-on-surface-variant">Bridging clinical medicine with financial strategy to create sustainable healthcare operations.</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group border border-outline-variant bg-white p-6 rounded transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/5] bg-slate-100 mb-stack-sm rounded-lg overflow-hidden relative grayscale group-hover:grayscale-0 transition-all">
+<img alt="CFO" class="w-full h-full object-cover" data-alt="A headshot of a female healthcare finance executive wearing a professional charcoal gray blazer and elegant accessories, smiling warmly. The setting is a bright, airy corporate boardroom with floor-to-ceiling windows and soft daylight illuminating the scene. The visual style is professional, clean, and modern, utilizing a sophisticated color palette of white, gray, and subtle blue tones. The mood is one of focused precision and financial transparency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWujwdVg6QKarknaxtAzz3kNSgJnUnmQNFNIAysJMsHrKz5_GTNTG8HJ4uykjttUZPYRJI23WF0cQt1soI0IR_PSKfPKHt8TkNtpIsW0Ngtit-E93LRQ2IXzdIOiFGrQmTnVowSLYYmycSCRnudIO8euHBGlJybKK1UveDLz4eVeT-kmJh4gDIvEyN-yJStL5i9P5WjnLZ5aUKQwGE8Uo3jwya6uNUI_H0842TMg2oxwov4Ui12ks7de6K8EdnVLXBzD3svm-tLi4"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary">Sarah Miller, CPA</h3>
+<p class="font-body-sm text-teal-600 font-semibold mb-stack-xs uppercase tracking-wider">Chief Financial Officer</p>
+<p class="font-body-sm text-on-surface-variant">Expert in revenue cycle management and high-stakes financial auditing for multi-state providers.</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group border border-outline-variant bg-white p-6 rounded transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/5] bg-slate-100 mb-stack-sm rounded-lg overflow-hidden relative grayscale group-hover:grayscale-0 transition-all">
+<img alt="COO" class="w-full h-full object-cover" data-alt="A portrait of a male operations director in a professional business casual attire, standing in a sleek, minimalist modern workspace. The lighting is sharp and architectural, highlighting the clean lines of the environment. The palette is dominated by deep navy, slate gray, and bright white, conveying a sense of organizational rigor and efficiency. The expression is one of calm, professional readiness and operational mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoycZIVIDxsLbzpvAXjLPWR27zXbAm1GK1pmfpMBql-LoV8qL1xHWOXhz03iig6Xs0tNWTc5I9O30nUjROJJFIOQYAAZeHMPpMdCPf00oQboIysqUb4Fk65_sDNVPisVkvtbMzTTd8shH9pbXYJdSrIlYp3D73j7I4IJzgxCSemzLeERPf_c1tyMk93WnXoa4wT8SMOYG55WGlhXDUBIdNHra3Wjn_U-75MqHcXF6ChsR9CJ5jTukgdb1YZBTF4azS47xLySuhdgw"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary">James Thornton</h3>
+<p class="font-body-sm text-teal-600 font-semibold mb-stack-xs uppercase tracking-wider">Chief Operations Officer</p>
+<p class="font-body-sm text-on-surface-variant">Over 15 years of experience in hospital administration and operational streamlining.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Values Bento Grid -->
+<section class="py-section-gap bg-slate-50 border-t border-slate-200">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-gutter h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-primary p-12 flex flex-col justify-end text-white rounded-lg">
+<span class="material-symbols-outlined text-4xl text-teal-400 mb-stack-md">shield</span>
+<h3 class="font-h2 text-h2 mb-stack-sm">The Precision Standard</h3>
+<p class="font-body-lg text-slate-300">We apply clinical rigor to financial data. Every audit is a surgical examination of your revenue cycle, identifying inefficiencies with scientific accuracy.</p>
+</div>
+<div class="md:col-span-2 bg-white border border-slate-200 p-8 rounded-lg flex flex-col justify-center">
+<h4 class="font-h3 text-h3 text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600">groups</span> Collaborative Partners
+                        </h4>
+<p class="font-body-md text-on-surface-variant mt-stack-xs">We don't just provide reports; we work alongside your administrative team to implement lasting change.</p>
+</div>
+<div class="bg-white border border-slate-200 p-8 rounded-lg flex flex-col justify-center">
+<h4 class="font-h3 text-h3 text-primary mb-2">Transparency</h4>
+<p class="font-body-sm text-on-surface-variant">No hidden fees. No opaque processes. Just clear, actionable financial truth.</p>
+</div>
+<div class="bg-teal-600 p-8 rounded-lg flex flex-col justify-center text-white">
+<h4 class="font-h3 text-h3 mb-2">Security</h4>
+<p class="font-body-sm text-teal-50">Enterprise-grade HIPAA compliance is the baseline of our entire technical stack.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="bg-[#1b263b] rounded-lg p-stack-lg md:p-section-gap text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(13,148,136,0.3),transparent_50%)]"></div>
+</div>
+<h2 class="font-h1 text-h1 text-white relative z-10">Secure Your Financial Future</h2>
+<p class="font-body-lg text-slate-400 mt-stack-sm max-w-xl mx-auto relative z-10">
+                        Join 20+ leading healthcare providers who have transformed their revenue cycles with Proxima Care Partners.
+                    </p>
+<div class="mt-stack-lg relative z-10">
+<button class="px-12 py-4 bg-[#0D9488] text-white rounded font-button text-button hover:bg-[#0D9488]/90 shadow-lg shadow-teal-900/20 transition-all">Schedule Your Free Audit Today</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 w-full py-12">
+<div class="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-slate-900 dark:text-white mb-4">Proxima Care Partners</div>
+<p class="font-manrope text-sm text-slate-500 mb-6">Elevating healthcare finance through clinical precision and unwavering financial integrity.</p>
+<div class="flex space-x-4">
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-teal-600 transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 uppercase text-xs tracking-widest">Resources</h4>
+<ul class="space-y-2">
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Terms of Service</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Compliance</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 uppercase text-xs tracking-widest">Company</h4>
+<ul class="space-y-2">
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Security</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">Support</a></li>
+<li><a class="font-manrope text-sm text-slate-500 hover:text-teal-600 transition-colors underline decoration-teal-500/30 underline-offset-4" href="#">About Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 uppercase text-xs tracking-widest">Legal</h4>
+<p class="font-manrope text-sm text-slate-500">© 2024 Proxima Care Partners. HIPAA Compliant.</p>
+<div class="mt-4 p-3 border border-slate-200 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600 text-sm">lock</span>
+<span class="text-xs text-slate-500">AES-256 Encryption Standard</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

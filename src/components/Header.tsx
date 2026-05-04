@@ -109,7 +109,7 @@ export default function Header() {
               {link.label}
             </NavLink>
           ))}
-          <div className="flex gap-3 pt-2 border-t border-white/8">
+          <div className="flex flex-col gap-3 pt-4 border-t border-white/8">
             <Link
               to="/contact"
               className="flex-1 flex items-center justify-center gap-1.5 border border-white/10 bg-white/5 py-2 text-sm font-semibold text-slate-300 rounded-sm hover:border-teal-500/40 hover:text-teal-300 transition-colors"

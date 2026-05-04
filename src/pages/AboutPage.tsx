@@ -36,41 +36,41 @@ const team = [
   },
 ];
 
-const values = [
-  {
-    icon: 'shield',
-    title: 'The Precision Standard',
-    description: 'We apply clinical rigor to financial data. Every audit is a surgical examination of your revenue cycle, identifying inefficiencies with scientific accuracy.',
-    dark: true,
-    large: true,
-  },
-  {
-    icon: 'groups',
-    title: 'Collaborative Partners',
-    description: "We don't just provide reports - we work alongside your administrative team to implement lasting, meaningful change.",
-    dark: false,
-    large: false,
-  },
-  {
-    icon: 'visibility',
-    title: 'Transparency',
-    description: 'No hidden fees. No opaque processes. Just clear, actionable financial truth delivered in plain language.',
-    dark: false,
-    large: false,
-  },
-  {
-    icon: 'lock',
-    title: 'Security First',
-    description: 'Enterprise-grade HIPAA compliance is the baseline of our entire technical and operational stack.',
-    teal: true,
-    large: false,
-  },
-];
+// const values = [
+//   {
+//     icon: 'shield',
+//     title: 'The Precision Standard',
+//     description: 'We apply clinical rigor to financial data. Every audit is a surgical examination of your revenue cycle, identifying inefficiencies with scientific accuracy.',
+//     dark: true,
+//     large: true,
+//   },
+//   {
+//     icon: 'groups',
+//     title: 'Collaborative Partners',
+//     description: "We don't just provide reports - we work alongside your administrative team to implement lasting, meaningful change.",
+//     dark: false,
+//     large: false,
+//   },
+//   {
+//     icon: 'visibility',
+//     title: 'Transparency',
+//     description: 'No hidden fees. No opaque processes. Just clear, actionable financial truth delivered in plain language.',
+//     dark: false,
+//     large: false,
+//   },
+//   {
+//     icon: 'lock',
+//     title: 'Security First',
+//     description: 'Enterprise-grade HIPAA compliance is the baseline of our entire technical and operational stack.',
+//     teal: true,
+//     large: false,
+//   },
+// ];
 
 const stats = [
-  { end: 10, prefix: '',  suffix: '+',  label: 'Years of Experience' },
-  { end: 20, prefix: '',  suffix: '+',  label: 'Active Clients'       },
-  { end: 10, prefix: '$', suffix: 'M+', label: 'Revenue Optimized'    },
+  { end: 10, prefix: '', suffix: '+', label: 'Years of Experience' },
+  { end: 20, prefix: '', suffix: '+', label: 'Active Clients' },
+  { end: 10, prefix: '$', suffix: 'M+', label: 'Revenue Optimized' },
 ];
 
 function CountUpStat({ end, prefix = '', suffix = '', inView }: { end: number; prefix?: string; suffix?: string; inView: boolean }) {
@@ -173,17 +173,15 @@ export default function AboutPage() {
             {stats.map((s, i) => (
               <div key={i} className={`${i < stats.length - 1 ? 'md:border-r md:border-white/10' : ''}`}>
                 <div
-                  className={`font-bold text-teal-400 mb-2 tabular-nums transition-all duration-700 ${
-                    statsRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
+                  className={`font-bold text-teal-400 mb-2 tabular-nums transition-all duration-700 ${statsRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
                   style={{ fontFamily: 'Manrope, sans-serif', fontSize: '48px', letterSpacing: '-0.02em', transitionDelay: `${i * 120}ms` }}
                 >
                   <CountUpStat end={s.end} prefix={s.prefix} suffix={s.suffix} inView={statsRef.inView} />
                 </div>
                 <p
-                  className={`text-slate-400 text-sm font-semibold uppercase tracking-widest transition-all duration-700 ${
-                    statsRef.inView ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`text-slate-400 text-sm font-semibold uppercase tracking-widest transition-all duration-700 ${statsRef.inView ? 'opacity-100' : 'opacity-0'
+                    }`}
                   style={{ fontFamily: 'Inter, sans-serif', transitionDelay: `${i * 120 + 200}ms` }}
                 >
                   {s.label}
@@ -214,9 +212,8 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <div
                 key={i}
-                className={`group glass-card rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-500 ${
-                  teamRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+                className={`group glass-card rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-500 ${teamRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
                 style={{ transitionDelay: `${i * 120 + 200}ms` }}
               >
                 <div className="aspect-[4/5] overflow-hidden bg-[#051125]">

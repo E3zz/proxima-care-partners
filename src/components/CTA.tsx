@@ -21,7 +21,7 @@ export default function CTA() {
     <section id="contact" className="py-24 bg-[#030d1a] section-divider" ref={ref}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
         <div
-          className={`relative bg-gradient-to-br from-[#0d1f3c] via-[#051125] to-[#030d1a] border border-teal-500/15 rounded-2xl overflow-hidden p-12 lg:p-20 text-center transition-all duration-700 ${
+          className={`relative bg-gradient-to-br from-[#0d1f3c] via-[#051125] to-[#030d1a] border border-teal-500/15 rounded-2xl overflow-hidden p-8 lg:p-20 text-center transition-all duration-700 ${
             inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >

@@ -62,7 +62,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-24 bg-[#030d1a] grid-texture glow-teal overflow-hidden">
+    <section id="home" className="relative pt-28 pb-16 lg:pt-32 lg:pb-24 bg-[#030d1a] grid-texture glow-teal overflow-hidden">
       {/* Ambient glows */}
       <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-teal-500/8 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-teal-700/6 rounded-full blur-[100px] pointer-events-none" />
@@ -84,7 +84,7 @@ export default function Hero() {
               className="animate-fade-in-up delay-100 font-bold text-white mb-6 leading-[1.1]"
               style={{
                 fontFamily: 'Manrope, sans-serif',
-                fontSize: 'clamp(38px, 5.5vw, 58px)',
+                fontSize: 'clamp(32px, 8vw, 58px)',
                 letterSpacing: '-0.03em',
               }}
             >
@@ -102,7 +102,7 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="animate-fade-in-up delay-300 flex flex-wrap gap-4 mb-14">
+            <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 mb-14">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-xl shadow-teal-900/50 rounded-sm"
@@ -122,9 +122,9 @@ export default function Hero() {
             </div>
 
             {/* Stats */}
-            <div className="animate-fade-in-up delay-400 flex flex-wrap items-center gap-8">
+            <div className="animate-fade-in-up delay-400 grid grid-cols-2 gap-6 md:flex md:flex-wrap md:gap-8 items-center">
               {stats.map((stat, i) => (
-                <div key={i} className={`flex items-center gap-3 ${i > 0 ? 'pl-8 border-l border-white/10' : ''}`}>
+                <div key={i} className={`flex items-center gap-3 ${i > 0 ? 'md:pl-8 md:border-l md:border-white/10' : ''}`}>
                   <div>
                     <div
                       className="font-bold text-white leading-none"

@@ -35,7 +35,7 @@ export default function Footer() {
     <footer className="bg-[#051125] text-slate-400" aria-label="Site footer">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8 pt-16 pb-8">
         {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-10 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-10 mb-14">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-5">

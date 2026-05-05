@@ -183,7 +183,11 @@ export default function SpecialtiesPage() {
         </div>
       </section>
 
-      <CTA />
+      <CTA 
+        pillText="Get In Touch"
+        title={<>Don't See Your Practice? <br /><span className="text-shimmer">Contact Us</span></>}
+        description="Our certified coders have experience across dozens of medical specialties. Contact us to discuss how we can support your unique clinical requirements."
+      />
     </>
   );
 }

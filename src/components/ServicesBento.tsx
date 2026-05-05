@@ -170,11 +170,11 @@ export default function ServicesBento() {
         >
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 border border-white/10 bg-white/5 text-white px-10 py-4 font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all duration-300 rounded-sm text-sm group"
+            className="inline-flex items-center justify-center gap-2 border border-white/10 bg-white/5 text-white px-4 py-3 sm:px-10 sm:py-4 font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all duration-300 rounded-lg text-[13px] sm:text-sm group"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             View All Services
-            <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+            <span className="material-symbols-outlined text-[16px] sm:text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
           </Link>
         </div>
       </div>

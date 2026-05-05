@@ -281,7 +281,11 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CTA />
+      <CTA 
+        pillText="Custom Solutions"
+        title={<>Need Additional Services? <br /><span className="text-shimmer">Give Us a Call</span></>}
+        description="If you need specialized billing solutions or services not listed here, our experts can tailor a comprehensive plan designed specifically for your practice."
+      />
     </>
   );
 }

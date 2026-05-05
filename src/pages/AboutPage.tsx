@@ -135,11 +135,11 @@ export default function AboutPage() {
               <p className="text-slate-400 mb-8 leading-relaxed max-w-lg" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: '1.7' }}>
                 Proxima Care Partners bridges the gap between medical excellence and financial integrity, ensuring healthcare providers can focus on patient care while we optimize their revenue ecosystem.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="/contact" className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 font-bold hover:bg-teal-500 transition-all rounded-sm text-sm shadow-lg shadow-teal-900/50">
+              <div className="flex flex-col min-[400px]:flex-row gap-3 sm:gap-4">
+                <a href="/contact" className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-5 py-3.5 sm:px-8 sm:py-4 font-bold hover:bg-teal-500 transition-all rounded-lg text-sm sm:text-[15px] shadow-lg shadow-teal-900/50">
                   Request Free Audit
                 </a>
-                <a href="/services" className="inline-flex items-center gap-2 border border-white/10 bg-white/5 text-white px-8 py-4 font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all rounded-sm text-sm">
+                <a href="/services" className="inline-flex items-center justify-center gap-2 border border-white/10 bg-white/5 text-white px-5 py-3.5 sm:px-8 sm:py-4 font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all rounded-lg text-sm sm:text-[15px]">
                   Our Process
                 </a>
               </div>

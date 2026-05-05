@@ -86,7 +86,7 @@ export default function Specialties() {
         >
           <Link
             to="/specialties"
-            className="inline-flex items-center gap-2 bg-teal-600 text-white px-10 py-4 font-bold hover:bg-teal-500 transition-all duration-300 rounded-sm text-sm shadow-lg shadow-teal-900/50 group"
+            className="inline-flex items-center gap-2 bg-teal-600 text-white px-10 py-4 font-bold hover:bg-teal-500 transition-all duration-300 rounded-lg text-sm shadow-lg shadow-teal-900/50 group"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             View All Specialties

@@ -13,8 +13,17 @@ function useInView(threshold = 0.15) {
   }, [threshold]);
   return { ref, inView };
 }
+interface CTAProps {
+  pillText?: string;
+  title?: React.ReactNode;
+  description?: string;
+}
 
-export default function CTA() {
+export default function CTA({ 
+  pillText = "Don't Know Where To Start?",
+  title = <>Give Us a Call or <br /><span className="text-shimmer">Schedule a Meeting</span></>,
+  description = "Not sure where to start? Our billing specialists will assess your current workflow, identify revenue gaps, and walk you through a tailored plan - at no cost and no commitment."
+}: CTAProps) {
   const { ref, inView } = useInView();
 
   return (
@@ -45,7 +54,7 @@ export default function CTA() {
             {/* Badge */}
             <div className="pill-teal mb-8 inline-flex">
               <span className="material-symbols-outlined text-[15px]">calendar_today</span>
-              Don't Know Your Specialty?
+              {pillText}
             </div>
 
             <h2
@@ -57,34 +66,32 @@ export default function CTA() {
                 lineHeight: '1.1',
               }}
             >
-              Give Us a Call or{' '}
-              <br />
-              <span className="text-shimmer">Schedule a Meeting</span>
+              {title}
             </h2>
 
             <p
               className="text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: '1.7' }}
             >
-              Not sure where to start? Our billing specialists will assess your current workflow, identify revenue gaps, and walk you through a tailored plan - at no cost and no commitment.
+              {description}
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-14">
+            <div className="flex flex-col min-[400px]:flex-row justify-center gap-3 sm:gap-4 mb-14">
               <a
                 href="tel:+18005551234"
-                className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-10 py-5 font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-2xl shadow-teal-900/60 rounded-sm"
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}
+                className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-4 py-3 sm:px-10 sm:py-5 text-[13px] sm:text-base font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-2xl shadow-teal-900/60 rounded-lg"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <span className="material-symbols-outlined text-[20px]">phone</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[20px]">phone</span>
                 Give Us a Call
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white/6 backdrop-blur-sm border border-white/12 text-white px-10 py-5 font-bold hover:bg-white/12 hover:border-teal-500/30 active:scale-95 transition-all duration-200 rounded-sm"
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}
+                className="inline-flex items-center justify-center gap-2 bg-white/6 backdrop-blur-sm border border-white/12 text-white px-4 py-3 sm:px-10 sm:py-5 text-[13px] sm:text-base font-bold hover:bg-white/12 hover:border-teal-500/30 active:scale-95 transition-all duration-200 rounded-lg"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <span className="material-symbols-outlined text-[20px]">calendar_today</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[20px]">calendar_today</span>
                 Schedule a Meeting
               </Link>
             </div>

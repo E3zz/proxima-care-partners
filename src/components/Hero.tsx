@@ -102,21 +102,21 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 mb-14">
+            <div className="animate-fade-in-up delay-300 flex flex-col min-[400px]:flex-row gap-3 sm:gap-4 mb-14">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-xl shadow-teal-900/50 rounded-sm"
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px' }}
+                className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-4 py-3 sm:px-8 sm:py-4 text-[13px] sm:text-[15px] font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-xl shadow-teal-900/50 rounded-lg"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <span className="material-symbols-outlined text-[18px]">phone</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">phone</span>
                 Give Us a Call
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all duration-200 rounded-sm"
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px' }}
+                className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-4 py-3 sm:px-8 sm:py-4 text-[13px] sm:text-[15px] font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all duration-200 rounded-lg"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">calendar_today</span>
                 Schedule a Meeting
               </a>
             </div>

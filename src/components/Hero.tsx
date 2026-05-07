@@ -88,8 +88,8 @@ export default function Hero() {
                 letterSpacing: '-0.03em',
               }}
             >
-              Maximizing Revenue,{' '}
-              <br />
+              Maximizing <br />
+              Revenue, <br />
               <span className="text-shimmer">Minimizing Denials</span>
             </h1>
 

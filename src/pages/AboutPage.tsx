@@ -102,9 +102,9 @@ function CountUpStat({ end, prefix = '', suffix = '', inView }: { end: number; p
 }
 
 export default function AboutPage() {
-  const teamRef = useInView();
-  const valuesRef = useInView();
-  const statsRef = useInView(0.3);
+  const { ref: teamRef, inView: teamInView } = useInView();
+  const { ref: valuesRef, inView: valuesInView } = useInView();
+  const { ref: statsRef, inView: statsInView } = useInView(0.3);
 
   return (
     <>
@@ -169,18 +169,18 @@ export default function AboutPage() {
       {/* Stats Bar */}
       <section className="py-14 bg-[#051125] border-y border-white/5">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" ref={statsRef.ref}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" ref={statsRef}>
             {stats.map((s, i) => (
               <div key={i} className={`${i < stats.length - 1 ? 'md:border-r md:border-white/10' : ''}`}>
                 <div
-                  className={`font-bold text-teal-400 mb-2 tabular-nums transition-all duration-700 ${statsRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  className={`font-bold text-teal-400 mb-2 tabular-nums transition-all duration-700 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}
                   style={{ fontFamily: 'Manrope, sans-serif', fontSize: '48px', letterSpacing: '-0.02em', transitionDelay: `${i * 120}ms` }}
                 >
-                  <CountUpStat end={s.end} prefix={s.prefix} suffix={s.suffix} inView={statsRef.inView} />
+                  <CountUpStat end={s.end} prefix={s.prefix} suffix={s.suffix} inView={statsInView} />
                 </div>
                 <p
-                  className={`text-slate-400 text-sm font-semibold uppercase tracking-widest transition-all duration-700 ${statsRef.inView ? 'opacity-100' : 'opacity-0'
+                  className={`text-slate-400 text-sm font-semibold uppercase tracking-widest transition-all duration-700 ${statsInView ? 'opacity-100' : 'opacity-0'
                     }`}
                   style={{ fontFamily: 'Inter, sans-serif', transitionDelay: `${i * 120 + 200}ms` }}
                 >
@@ -193,10 +193,10 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="py-24 bg-[#030d1a] section-divider relative overflow-hidden" ref={teamRef.ref}>
+      <section className="py-24 bg-[#030d1a] section-divider relative overflow-hidden" ref={teamRef}>
         <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-teal-500/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className={`text-center mb-16 transition-all duration-700 ${teamRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-16 transition-all duration-700 ${teamInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="pill-teal mb-5 inline-flex">
               <span className="material-symbols-outlined text-[15px]">groups</span>
               Our Team
@@ -212,7 +212,7 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <div
                 key={i}
-                className={`group glass-card rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-500 ${teamRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                className={`group glass-card rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-500 ${teamInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 style={{ transitionDelay: `${i * 120 + 200}ms` }}
               >
@@ -235,7 +235,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values - Enhanced */}
-      <section className="py-28 bg-[#030d1a] relative overflow-hidden" ref={valuesRef.ref}>
+      <section className="py-28 bg-[#030d1a] relative overflow-hidden" ref={valuesRef}>
         {/* Background texture */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-teal-500/5 rounded-full blur-3xl" />
@@ -249,7 +249,7 @@ export default function AboutPage() {
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10">
           {/* Header */}
-          <div className={`text-center mb-16 transition-all duration-700 ${valuesRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-16 transition-all duration-700 ${valuesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-teal-500/15 text-teal-400 rounded-full text-xs font-bold uppercase tracking-widest mb-5 border border-teal-500/20">
               <span className="material-symbols-outlined text-[15px]">star</span>
               What We Stand For
@@ -303,7 +303,6 @@ export default function AboutPage() {
                 tag: 'HIPAA · SOC 2 · AES-256',
                 delay: 340,
                 large: false,
-                dark: true,
               },
               {
                 icon: 'trending_up',
@@ -326,12 +325,7 @@ export default function AboutPage() {
             ].map((v, i) => (
               <div
                 key={i}
-                className={`group relative rounded-2xl p-7 border transition-all duration-700 cursor-default overflow-hidden
-                  ${v.dark
-                    ? 'bg-[#1b263b] border-white/10 hover:border-teal-500/40'
-                    : 'bg-white/5 border-white/8 hover:bg-white/8 hover:border-teal-500/30'}
-                  hover:-translate-y-1 hover:shadow-2xl hover:shadow-teal-900/30
-                  ${valuesRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                className={`group relative rounded-2xl p-7 border transition-all duration-700 cursor-default overflow-hidden bg-white/5 border-white/8 hover:bg-white/8 hover:border-teal-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-teal-900/30 ${valuesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: `${v.delay}ms` }}
               >
                 {/* Glow blob on hover */}
@@ -376,7 +370,7 @@ export default function AboutPage() {
 
           {/* Bottom accent bar */}
           <div
-            className={`mt-16 border border-white/8 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-white/4 transition-all duration-700 ${valuesRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`mt-16 border border-white/8 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-white/4 transition-all duration-700 ${valuesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: '600ms' }}
           >
             <div className="text-center md:text-left">

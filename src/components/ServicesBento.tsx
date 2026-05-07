@@ -99,21 +99,13 @@ export default function ServicesBento() {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`bento-card rounded-xl ${service.span || ''} ${
-                service.dark
-                  ? 'bg-teal-600/10 border border-teal-500/25'
-                  : service.accent
-                  ? 'bg-white/6 border border-teal-500/20'
-                  : 'bg-white/4 border border-white/8'
-              } p-8 flex flex-col transition-all duration-700 ${
+              className={`bento-card rounded-xl ${service.span || ''} bg-white/4 border border-white/8 hover:bg-white/8 hover:border-teal-500/30 p-8 flex flex-col transition-all duration-700 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${i * 90 + 200}ms` }}
             >
               {/* Icon */}
-              <div className={`w-13 h-13 rounded-xl flex items-center justify-center mb-6 ${
-                service.dark ? 'bg-teal-500/15 border border-teal-500/20' : 'bg-white/8 border border-white/10'
-              }`}
+              <div className="w-13 h-13 rounded-xl flex items-center justify-center mb-6 bg-white/8 border border-white/10"
                 style={{ width: '52px', height: '52px' }}
               >
                 <span className="material-symbols-outlined text-[26px] text-teal-400">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import LogoIcon from './LogoIcon';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -21,23 +22,47 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? 'bg-[#030d1a]/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/8'
           : 'bg-[#030d1a]/70 backdrop-blur-md border-b border-white/5'
-      }`}
+        }`}
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group shrink-0">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg shadow-teal-900/50 group-hover:shadow-teal-500/30 transition-shadow duration-300">
-            <span className="text-white font-bold text-lg" style={{ fontFamily: 'Manrope, sans-serif' }}>P</span>
-          </div>
-          <div>
-            <span className="text-white font-bold text-lg leading-none tracking-tight block" style={{ fontFamily: 'Manrope, sans-serif' }}>
-              Proxima Care
-            </span>
-            <div className="text-teal-400 text-xs font-semibold tracking-widest uppercase mt-0.5">Partners</div>
+        <Link to="/" className="flex items-center gap-1.5 group shrink-0">
+          <LogoIcon className="w-12 h-12 drop-shadow-[0_0_15px_rgba(20,184,166,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(20,184,166,0.5)] transition-all duration-300" />
+          <div className="flex flex-col">
+            <div className="flex overflow-hidden">
+              {"Proxima Care".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="text-white font-bold text-lg leading-none tracking-tight block letter-animate"
+                  style={{ 
+                    fontFamily: 'var(--font-heading)',
+                    animationName: `letter-fly-${(i % 4) + 1}`,
+                    animationDelay: `${i * 40}ms`,
+                    whiteSpace: char === " " ? "pre" : "normal"
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+            <div className="flex overflow-hidden mt-0.5">
+              {"PARTNERS".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="text-teal-400 text-[10px] font-bold tracking-[0.2em] uppercase letter-animate"
+                  style={{ 
+                    fontFamily: 'var(--font-heading)',
+                    animationName: `letter-fly-${((i + 5) % 4) + 1}`,
+                    animationDelay: `${(i + 12) * 30}ms`
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
           </div>
         </Link>
 
@@ -49,10 +74,9 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-sm font-semibold tracking-tight transition-all duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${
-                  isActive
-                    ? 'text-teal-400 after:!w-full'
-                    : 'text-slate-300 hover:text-white'
+                `text-sm font-semibold tracking-tight transition-all duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${isActive
+                  ? 'text-teal-400 after:!w-full'
+                  : 'text-slate-300 hover:text-white'
                 }`
               }
               style={{ fontFamily: 'Manrope, sans-serif' }}
@@ -91,9 +115,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? 'max-h-96 border-t border-white/8' : 'max-h-0'
-        } bg-[#030d1a]/98 backdrop-blur-xl`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-96 border-t border-white/8' : 'max-h-0'
+          } bg-[#030d1a]/98 backdrop-blur-xl`}
       >
         <nav className="px-6 py-4 flex flex-col gap-4" aria-label="Mobile navigation">
           {navLinks.map((link) => (

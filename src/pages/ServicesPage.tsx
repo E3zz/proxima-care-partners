@@ -242,15 +242,12 @@ export default function ServicesPage() {
             {services.map((service, i) => (
               <div
                 key={i}
-                className={`rounded-2xl p-8 flex flex-col transition-all duration-700 hover:shadow-xl hover:shadow-teal-900/20 hover:-translate-y-1 ${service.highlight
-                  ? 'lg:col-span-2 bg-[#1b263b] border border-teal-500/20 shadow-lg glow-teal relative overflow-hidden'
-                  : 'glass-card'
+                className={`rounded-2xl p-8 flex flex-col transition-all duration-700 glass-card ${service.highlight
+                  ? 'lg:col-span-2 shadow-lg relative overflow-hidden'
+                  : ''
                   } ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${i * 80 + 100}ms` }}
               >
-                {service.highlight && (
-                   <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
-                )}
                 <div className="flex items-start gap-5 relative z-10">
                   <div className="w-14 h-14 rounded-xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center flex-shrink-0">
                     <span className="material-symbols-outlined text-[28px] text-teal-400">{service.icon}</span>

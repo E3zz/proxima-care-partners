@@ -83,7 +83,7 @@ export default function Hero() {
             <h1
               className="animate-fade-in-up delay-100 font-bold text-white mb-6 leading-[1.1]"
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-heading)',
                 fontSize: 'clamp(32px, 8vw, 58px)',
                 letterSpacing: '-0.03em',
               }}
@@ -96,7 +96,7 @@ export default function Hero() {
             {/* Subtitle */}
             <p
               className="animate-fade-in-up delay-200 text-slate-400 mb-10 max-w-lg leading-relaxed"
-              style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: '1.7' }}
+              style={{ fontFamily: 'var(--font-body)', fontSize: '18px', lineHeight: '1.7' }}
             >
               Empowering healthcare providers through precision billing and strategic revenue cycle management. We turn financial complexity into operational clarity, so you can focus on patient care.
             </p>
@@ -106,7 +106,7 @@ export default function Hero() {
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-4 py-3 sm:px-8 sm:py-4 text-[13px] sm:text-[15px] font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-xl shadow-teal-900/50 rounded-lg"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                style={{ fontFamily: 'var(--font-body)' }}
               >
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">phone</span>
                 Give Us a Call
@@ -114,7 +114,7 @@ export default function Hero() {
               <a
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-4 py-3 sm:px-8 sm:py-4 text-[13px] sm:text-[15px] font-bold hover:bg-white/10 hover:border-teal-500/30 transition-all duration-200 rounded-lg"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                style={{ fontFamily: 'var(--font-body)' }}
               >
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">calendar_today</span>
                 Schedule a Meeting
@@ -128,13 +128,13 @@ export default function Hero() {
                   <div>
                     <div
                       className="font-bold text-white leading-none"
-                      style={{ fontFamily: 'Manrope, sans-serif', fontSize: '30px' }}
+                      style={{ fontFamily: 'var(--font-heading)', fontSize: '30px' }}
                     >
                       <CountUp end={stat.value} suffix={stat.suffix} />
                     </div>
                     <div
                       className="text-teal-400 text-xs font-semibold uppercase tracking-wider mt-1"
-                      style={{ fontFamily: 'Inter, sans-serif', whiteSpace: 'pre-line' }}
+                      style={{ fontFamily: 'var(--font-body)', whiteSpace: 'pre-line' }}
                     >
                       {stat.label}
                     </div>
@@ -162,8 +162,8 @@ export default function Hero() {
                   <span className="material-symbols-outlined text-teal-400 text-[22px]">trending_up</span>
                 </div>
                 <div>
-                  <div className="font-bold text-sm text-white" style={{ fontFamily: 'Manrope, sans-serif' }}>+$2.4M</div>
-                  <div className="text-xs text-slate-400" style={{ fontFamily: 'Inter, sans-serif' }}>Revenue recovered</div>
+                  <div className="font-bold text-sm text-white" style={{ fontFamily: 'var(--font-heading)' }}>+$2.4M</div>
+                  <div className="text-xs text-slate-400" style={{ fontFamily: 'var(--font-body)' }}>Revenue recovered</div>
                 </div>
               </div>
               {/* Certification badge */}

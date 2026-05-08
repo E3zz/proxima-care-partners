@@ -104,7 +104,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="animate-fade-in-up delay-300 flex flex-col min-[400px]:flex-row gap-3 sm:gap-4 mb-14">
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-4 py-3 sm:px-8 sm:py-4 text-[13px] sm:text-[15px] font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-xl shadow-teal-900/50 rounded-lg"
                 style={{ fontFamily: 'var(--font-body)' }}
               >

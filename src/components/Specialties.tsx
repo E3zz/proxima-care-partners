@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useInView from '../hooks/useInView';
 
 const specialties = [
   { icon: 'cardiology', label: 'Cardiology', description: 'Complex cardiology billing with ICD-10/CPT precision for interventional and diagnostic services.' },
@@ -12,18 +12,6 @@ const specialties = [
   { icon: 'emergency', label: 'Emergency Medicine', description: 'High-volume ED billing with rapid-cycle RCM for acute and critical care levels.' },
 ];
 
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
-    }, { threshold });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
 
 export default function Specialties() {
   const { ref, inView } = useInView();

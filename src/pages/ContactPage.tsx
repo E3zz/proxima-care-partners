@@ -5,7 +5,7 @@ const contactInfo = [
   {
     icon: 'location_on',
     title: 'Corporate HQ',
-    lines: ['750 N St Paul St', 'Dallas, TX 75201'],
+    lines: ['1500 N Grant ST STE 5472', 'Denver, CO 80203'],
   },
   {
     icon: 'call',
@@ -67,7 +67,7 @@ export default function ContactPage() {
     <>
       <SEO
         title="Contact Us & Schedule a Meeting | Proxima Care Partners"
-        description="Contact Proxima Care Partners to schedule a free 30-minute revenue audit or discovery call. Reach us at our Dallas, TX headquarters or via our HIPAA-secure inquiry form."
+        description="Contact Proxima Care Partners to schedule a free 30-minute revenue audit or discovery call. Reach us at our Denver, CO headquarters or via our HIPAA-secure inquiry form."
         keywords="contact medical billing company, schedule medical billing meeting, revenue cycle management consultation, HIPAA secure inquiry"
         canonical="https://www.proximacarepartners.com/contact"
       />
@@ -110,7 +110,7 @@ export default function ContactPage() {
               <div className="rounded-2xl overflow-hidden glass-card">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRyl4erai06yes8w3ZYgbmD7Y3eMLXA6xGUAT_TH31SPWAKCWNdn_DUs5wUVHkxTbxP1Gsng3vJ3txBdyXMghnK3ek3jLJTsO1PhIJD3bL2uMz5FBtdCTSvxYDR8HyIo1FnHthX5N7SDcwOH4tU5xnQ4Jgma55J45P3X3H4XJ76YpZyKrkJZIxUeIMS33lRKVmQoiGu-4h1HiC6b75pbXt_sIxXwwZg14jhgk9lSng0bL0STm8iwzaezD_FtWwfvCraWfObpS81Q"
-                  alt="Proxima Care Partners Dallas HQ location map"
+                  alt="Proxima Care Partners Denver HQ location map"
                   className="w-full object-cover aspect-[4/3] opacity-50 grayscale contrast-125"
                 />
               </div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                 <div className="bg-[#051125] border border-teal-500/20 rounded-xl shadow-2xl p-5 flex flex-col items-center">
                   <span className="material-symbols-outlined text-teal-500 text-[40px] mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>location_pin</span>
                   <p className="font-bold text-white text-sm" style={{ fontFamily: 'Manrope, sans-serif' }}>Proxima Care Partners HQ</p>
-                  <p className="text-slate-400 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>Downtown Dallas Business District</p>
+                  <p className="text-slate-400 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>Downtown Denver Business District</p>
                 </div>
               </div>
             </div>

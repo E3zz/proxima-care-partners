@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LogoIcon from './LogoIcon';
 
 const footerLinks = {
   Solutions: [
@@ -18,15 +19,14 @@ const footerLinks = {
   Company: [
     { label: 'About Us', href: '/about' },
     { label: 'Compliance', href: '/about' },
-    { label: 'Security', href: '/about' },
-    { label: 'Careers', href: '/about' },
+    { label: 'Security', href: '/security' },
     { label: 'Support', href: '/contact' },
   ],
   Resources: [
-    { label: 'Privacy Policy', href: '/contact' },
-    { label: 'Terms of Service', href: '/contact' },
-    { label: 'HIPAA Policy', href: '/contact' },
-    { label: 'Billing FAQs', href: '/services' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms of Service', href: '/terms-of-service' },
+    { label: 'HIPAA Policy', href: '/hipaa-policy' },
+    { label: 'Billing FAQs', href: '/billing-faqs' },
   ],
 };
 
@@ -38,30 +38,64 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-10 mb-14">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-600 to-teal-500 flex items-center justify-center">
-                <span className="text-white font-bold text-lg" style={{ fontFamily: 'Manrope, sans-serif' }}>P</span>
+            <Link to="/" className="flex items-center gap-1.5 group mb-5">
+              <LogoIcon className="w-12 h-12 drop-shadow-[0_0_15px_rgba(20,184,166,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(20,184,166,0.5)] transition-all duration-300" />
+              <div className="flex flex-col">
+                <div className="flex overflow-hidden items-center">
+                  {"Proxima Care".split("").map((char, i) => {
+                    const isCare = i >= 8;
+                    return (
+                      <span
+                        key={i}
+                        className={`text-white text-[22px] leading-none tracking-tight block letter-animate ${isCare ? 'font-light opacity-90 text-teal-50' : 'font-extrabold'}`}
+                        style={{ 
+                          fontFamily: 'var(--font-heading)',
+                          animationName: `letter-fly-${(i % 4) + 1}`,
+                          animationDelay: `${i * 40}ms`,
+                          whiteSpace: char === " " ? "pre" : "normal"
+                        }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="flex overflow-hidden mt-1 gap-[3px]">
+                  {"PARTNERS".split("").map((char, i) => (
+                    <span
+                      key={i}
+                      className="text-teal-400 text-[10px] font-bold uppercase letter-animate"
+                      style={{ 
+                        fontFamily: 'var(--font-heading)',
+                        animationName: `letter-fly-${((i + 5) % 4) + 1}`,
+                        animationDelay: `${(i + 12) * 30}ms`
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div>
-                <div className="text-white font-bold text-lg leading-none" style={{ fontFamily: 'Manrope, sans-serif' }}>Proxima Care</div>
-                <div className="text-teal-500 text-xs font-semibold uppercase tracking-widest">Partners</div>
-              </div>
-            </div>
+            </Link>
             <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
               Leading the standard in medical billing excellence and revenue cycle integrity. HIPAA compliant, SOC 2 certified, and committed to maximizing your collections.
             </p>
             {/* Contact Info */}
-            <div className="space-y-2 mb-6">
-              {[
-                { icon: 'mail', text: 'billing@proximacarepartners.com' },
-                { icon: 'phone', text: '1-800-555-1234' },
-                { icon: 'location_on', text: 'Houston, TX 77002' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm hover:text-teal-400 transition-colors cursor-pointer">
-                  <span className="material-symbols-outlined text-teal-500 text-[18px]">{item.icon}</span>
-                  <span style={{ fontFamily: 'Inter, sans-serif' }}>{item.text}</span>
-                </div>
-              ))}
+            <div className="space-y-4">
+              <div className="flex items-start gap-3 group/item">
+                <span className="material-symbols-outlined text-teal-500 text-[20px] mt-0.5 group-hover/item:scale-110 transition-transform">location_on</span>
+                <span className="text-slate-400 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  1500 N Grant ST STE 5472<br />Denver, CO
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-sm hover:text-teal-400 transition-colors cursor-pointer">
+                <span className="material-symbols-outlined text-teal-500 text-[18px]">mail</span>
+                <span style={{ fontFamily: 'Inter, sans-serif' }}>billing@proximacarepartners.com</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm hover:text-teal-400 transition-colors cursor-pointer">
+                <span className="material-symbols-outlined text-teal-500 text-[18px]">phone</span>
+                <span style={{ fontFamily: 'Inter, sans-serif' }}>1-800-555-1234</span>
+              </div>
             </div>
             {/* Social Media */}
             <div className="flex items-center gap-3 mt-2">

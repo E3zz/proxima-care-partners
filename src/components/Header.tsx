@@ -23,8 +23,8 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? 'bg-[#030d1a]/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/8'
-          : 'bg-[#030d1a]/70 backdrop-blur-md border-b border-white/5'
+        ? 'bg-[#030d1a]/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/8'
+        : 'bg-[#030d1a]/70 backdrop-blur-md border-b border-white/5'
         }`}
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
@@ -37,7 +37,7 @@ export default function Header() {
                 <span
                   key={i}
                   className="text-white font-bold text-lg leading-none tracking-tight block letter-animate"
-                  style={{ 
+                  style={{
                     fontFamily: 'var(--font-heading)',
                     animationName: `letter-fly-${(i % 4) + 1}`,
                     animationDelay: `${i * 40}ms`,
@@ -53,7 +53,7 @@ export default function Header() {
                 <span
                   key={i}
                   className="text-teal-400 text-[10px] font-bold tracking-[0.2em] uppercase letter-animate"
-                  style={{ 
+                  style={{
                     fontFamily: 'var(--font-heading)',
                     animationName: `letter-fly-${((i + 5) % 4) + 1}`,
                     animationDelay: `${(i + 12) * 30}ms`
@@ -74,7 +74,7 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-sm font-semibold tracking-tight transition-all duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${isActive
+                `text-[13px] font-medium uppercase tracking-[0.1em] transition-all duration-200 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${isActive
                   ? 'text-teal-400 after:!w-full'
                   : 'text-slate-300 hover:text-white'
                 }`
@@ -90,14 +90,14 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="hidden lg:flex items-center gap-2 border border-white/10 bg-white/5 px-5 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:border-teal-500/40 hover:text-teal-300 transition-all duration-200 rounded-lg"
+            className="hidden lg:flex items-center gap-2 border border-white/10 bg-white/5 px-5 py-2 text-[11px] uppercase tracking-wider font-bold text-slate-300 hover:bg-white/10 hover:border-teal-500/40 hover:text-teal-300 transition-all duration-200 rounded-lg"
           >
-            <span className="material-symbols-outlined text-[16px]">calendar_today</span>
+            <span className="material-symbols-outlined text-[15px]">calendar_today</span>
             Schedule a Meeting
           </Link>
           <Link
             to="/contact"
-            className="hidden sm:flex bg-teal-600 text-white px-6 py-2.5 text-sm font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-lg shadow-teal-900/50 rounded-lg whitespace-nowrap"
+            className="hidden sm:flex bg-teal-600 text-white px-6 py-2.5 text-[11px] uppercase tracking-wider font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-lg shadow-teal-900/50 rounded-lg whitespace-nowrap"
           >
             Contact Us
           </Link>
@@ -125,7 +125,7 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-sm font-semibold py-1 transition-colors ${isActive ? 'text-teal-400' : 'text-slate-300 hover:text-teal-300'}`
+                `text-[13px] font-medium uppercase tracking-[0.1em] py-1 transition-colors ${isActive ? 'text-teal-400' : 'text-slate-300 hover:text-teal-300'}`
               }
               onClick={() => setMobileOpen(false)}
             >
@@ -135,15 +135,15 @@ export default function Header() {
           <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-3 pt-4 border-t border-white/8">
             <Link
               to="/contact"
-              className="flex-1 flex items-center justify-center gap-1.5 border border-white/10 bg-white/5 py-2 text-sm font-semibold text-slate-300 rounded-lg hover:border-teal-500/40 hover:text-teal-300 transition-colors"
+              className="flex-1 flex items-center justify-center gap-1.5 border border-white/10 bg-white/5 py-2 text-[11px] uppercase tracking-wider font-bold text-slate-300 rounded-lg hover:border-teal-500/40 hover:text-teal-300 transition-colors"
               onClick={() => setMobileOpen(false)}
             >
-              <span className="material-symbols-outlined text-[15px]">calendar_today</span>
+              <span className="material-symbols-outlined text-[14px]">calendar_today</span>
               Schedule
             </Link>
             <Link
               to="/contact"
-              className="flex-1 bg-teal-600 text-white py-2 text-sm font-bold text-center rounded-lg hover:bg-teal-500 transition-colors"
+              className="flex-1 bg-teal-600 text-white py-2 text-[11px] uppercase tracking-wider font-bold text-center rounded-lg hover:bg-teal-500 transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               Contact Us

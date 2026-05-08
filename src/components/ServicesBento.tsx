@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useInView from '../hooks/useInView';
 
 const services = [
   {
@@ -11,6 +11,7 @@ const services = [
     span: 'md:col-span-2',
     accent: true,
     learnMore: 'Learn more about RCM',
+    linkTo: '/rcm-process',
   },
   {
     icon: 'fact_check',
@@ -21,6 +22,7 @@ const services = [
     span: '',
     accent: false,
     learnMore: '',
+    linkTo: '',
   },
   {
     icon: 'gavel',
@@ -31,6 +33,7 @@ const services = [
     span: '',
     accent: false,
     learnMore: '',
+    linkTo: '',
   },
   {
     icon: 'monitoring',
@@ -42,6 +45,7 @@ const services = [
     accent: false,
     dark: true,
     learnMore: 'View Demo Report',
+    linkTo: '/demo-report',
   },
   {
     icon: 'local_hospital',
@@ -52,21 +56,9 @@ const services = [
     span: '',
     accent: false,
     learnMore: '',
+    linkTo: '',
   },
 ];
-
-function useInView(threshold = 0.02) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
-    }, { threshold, rootMargin: '50px' });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
 
 export default function ServicesBento() {
   const { ref, inView } = useInView();
@@ -144,12 +136,12 @@ export default function ServicesBento() {
 
               {/* Learn More Link */}
               {service.learnMore && (
-                <div className="flex items-center gap-1.5 text-sm font-semibold group cursor-pointer text-teal-400 hover:text-teal-300 transition-colors">
+                <Link to={service.linkTo} className="flex items-center gap-1.5 text-sm font-semibold group cursor-pointer text-teal-400 hover:text-teal-300 transition-colors">
                   <span>{service.learnMore}</span>
                   <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">
                     arrow_forward
                   </span>
-                </div>
+                </Link>
               )}
             </div>
           ))}

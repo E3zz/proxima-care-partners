@@ -1,18 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
-    }, { threshold });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
+import useInView from '../hooks/useInView';
 interface CTAProps {
   pillText?: string;
   title?: React.ReactNode;

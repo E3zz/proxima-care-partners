@@ -1,49 +1,45 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-const sideItems = [
-  { icon: 'analytics',      label: 'Request Free Audit',    href: '/contact', primary: true },
-  { icon: 'calendar_today', label: 'Schedule a Meeting',    href: '/contact', primary: false },
-  { icon: 'phone',          label: 'Call Us Now',           href: '/contact', primary: false },
-];
-
+/**
+ * Floating vertical tabs on viewport edges (Hawk Revenue Group style).
+ * - LEFT:  "Request Free Audit" tab
+ * - RIGHT: "Schedule a Meeting" + "Call Us Now" tabs with gap
+ * Responsive scaling for smaller devices.
+ */
 export default function SideNav() {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <aside
-      className={`fixed left-0 top-1/2 -translate-y-1/2 z-40 flex flex-col rounded-r-xl overflow-hidden shadow-2xl transition-all duration-500 ease-in-out ${
-        hovered ? 'w-56' : 'w-14'
-      }`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      aria-label="Quick actions sidebar"
-    >
-      {sideItems.map((item, i) => (
+    <>
+      {/* ── Left Edge Tab ────────────────────────────────── */}
+      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden sm:block">
         <Link
-          key={i}
-          to={item.href}
-          className={`flex items-center h-14 px-4 transition-all duration-300 group ${
-            item.primary
-              ? 'bg-teal-600 text-white hover:bg-teal-700'
-              : 'bg-[#1b263b] text-slate-300 hover:bg-teal-600 hover:text-white border-t border-slate-700'
-          }`}
-          aria-label={item.label}
+          to="/contact"
+          className="btn-shine block bg-teal-600/90 hover:bg-teal-500 backdrop-blur-md border border-teal-400/30 hover:border-teal-300/60 border-l-0 text-white font-bold text-[9px] md:text-[10px] uppercase tracking-wider px-1.5 md:px-2 py-3 md:py-4 rounded-r-md shadow-[0_0_15px_rgba(13,148,136,0.2)] hover:shadow-[0_0_25px_rgba(13,148,136,0.6)] transition-all duration-300 whitespace-nowrap hover:translate-x-1 hover:scale-[1.02]"
+          style={{ writingMode: 'vertical-rl', fontFamily: 'Manrope, sans-serif' }}
+          aria-label="Request Free Audit"
         >
-          <span className="material-symbols-outlined shrink-0 text-[22px] transition-transform duration-300 group-hover:scale-110">
-            {item.icon}
-          </span>
-          <span
-            className={`ml-4 text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 ${
-              hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-            }`}
-            style={{ fontFamily: 'Manrope, sans-serif' }}
-          >
-            {item.label}
-          </span>
+          Request Free Audit
         </Link>
-      ))}
-    </aside>
+      </div>
+
+      {/* ── Right Edge Tabs ──────────────────────────────── */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col gap-8">
+        <Link
+          to="/contact"
+          className="btn-shine block bg-teal-600/90 hover:bg-teal-500 backdrop-blur-md border border-teal-400/30 hover:border-teal-300/60 border-r-0 text-white font-bold text-[9px] md:text-[10px] uppercase tracking-wider px-1.5 md:px-2 py-3 md:py-4 rounded-l-md shadow-[0_0_15px_rgba(13,148,136,0.2)] hover:shadow-[0_0_25px_rgba(13,148,136,0.6)] transition-all duration-300 whitespace-nowrap hover:-translate-x-1 hover:scale-[1.02]"
+          style={{ writingMode: 'vertical-rl', fontFamily: 'Manrope, sans-serif' }}
+          aria-label="Schedule a Meeting"
+        >
+          Schedule a Meeting
+        </Link>
+        <Link
+          to="/contact"
+          className="btn-shine block bg-teal-600/90 hover:bg-teal-500 backdrop-blur-md border border-teal-400/30 hover:border-teal-300/60 border-r-0 text-white font-bold text-[9px] md:text-[10px] uppercase tracking-wider px-1.5 md:px-2 py-3 md:py-4 rounded-l-md shadow-[0_0_15px_rgba(13,148,136,0.2)] hover:shadow-[0_0_25px_rgba(13,148,136,0.6)] transition-all duration-300 whitespace-nowrap hover:-translate-x-1 hover:scale-[1.02]"
+          style={{ writingMode: 'vertical-rl', fontFamily: 'Manrope, sans-serif' }}
+          aria-label="Call Us Now"
+        >
+          Call Us Now
+        </Link>
+      </div>
+    </>
   );
 }

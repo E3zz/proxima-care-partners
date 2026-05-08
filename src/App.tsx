@@ -9,7 +9,14 @@ import ServicesPage from './pages/ServicesPage';
 import SpecialtiesPage from './pages/SpecialtiesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import './index.css';
+import NotFoundPage from './pages/NotFoundPage';
+import RcmProcessPage from './pages/RcmProcessPage';
+import DemoReportPage from './pages/DemoReportPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import HipaaPolicyPage from './pages/HipaaPolicyPage';
+import BillingFaqsPage from './pages/BillingFaqsPage';
+import SecurityPage from './pages/SecurityPage';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -33,6 +40,14 @@ function AppLayout() {
           <Route path="/specialties" element={<SpecialtiesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/rcm-process" element={<RcmProcessPage />} />
+          <Route path="/demo-report" element={<DemoReportPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/hipaa-policy" element={<HipaaPolicyPage />} />
+          <Route path="/billing-faqs" element={<BillingFaqsPage />} />
+          <Route path="/security" element={<SecurityPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

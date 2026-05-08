@@ -1,19 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 import CTA from '../components/CTA';
-
-function useInView(threshold = 0.02) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
-    }, { threshold, rootMargin: '50px' });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
+import useInView from '../hooks/useInView';
 
 const services = [
   {

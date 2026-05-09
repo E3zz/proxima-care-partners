@@ -1,7 +1,36 @@
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
+const AnimatedNumber = ({ value, prefix = '', suffix = '', decimals = 0, loaded = false }: any) => {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    if (!loaded) return;
+    let startTimestamp: number | null = null;
+    const duration = 2000;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCurrent(easeProgress * value);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [value, loaded]);
+
+  return <>{prefix}{current.toFixed(decimals)}{suffix}</>;
+};
+
 export default function DemoReportPage() {
+  const [loaded, setLoaded] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="pt-24 pb-20 relative">
       <Helmet>
@@ -27,7 +56,7 @@ export default function DemoReportPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b border-white/10">
             <div>
               <h2 className="text-2xl font-bold text-white">Monthly Financial Summary</h2>
-              <p className="text-sm text-slate-400">Generated for Q3 Sample Facility</p>
+              <p className="text-sm text-slate-400">Generated for Q3 Facility</p>
             </div>
             <div className="mt-4 md:mt-0 flex gap-3">
               <span className="pill-teal"><span className="material-symbols-outlined text-[14px]">calendar_month</span> Sep 2026</span>
@@ -38,9 +67,9 @@ export default function DemoReportPage() {
           {/* KPIs */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {[
-              { title: 'Total Collections', value: '$1.42M', change: '+8.2%', icon: 'account_balance_wallet' },
-              { title: 'First-Pass Clean Claim', value: '98.5%', change: '+1.5%', icon: 'fact_check' },
-              { title: 'A/R \u003E 90 Days', value: '12%', change: '-4.3%', icon: 'hourglass_bottom' },
+              { title: 'Total Collections', value: 1.42, prefix: '$', suffix: 'M', decimals: 2, change: '+8.2%', icon: 'account_balance_wallet' },
+              { title: 'First-Pass Clean Claim', value: 98.5, prefix: '', suffix: '%', decimals: 1, change: '+1.5%', icon: 'fact_check' },
+              { title: 'A/R > 90 Days', value: 12, prefix: '', suffix: '%', decimals: 0, change: '-4.3%', icon: 'hourglass_bottom' },
             ].map((kpi, index) => (
               <div key={index} className="bg-white/5 rounded-2xl p-6 border border-white/5 hover:border-teal-500/30 transition-all">
                 <div className="flex justify-between items-start mb-4">
@@ -52,7 +81,9 @@ export default function DemoReportPage() {
                   </span>
                 </div>
                 <h3 className="text-slate-400 text-sm uppercase tracking-wider font-semibold mb-1">{kpi.title}</h3>
-                <div className="text-3xl font-bold text-white" style={{ fontFamily: 'Manrope, sans-serif' }}>{kpi.value}</div>
+                <div className="text-3xl font-bold text-white" style={{ fontFamily: 'Manrope, sans-serif' }}>
+                  <AnimatedNumber value={kpi.value} prefix={kpi.prefix} suffix={kpi.suffix} decimals={kpi.decimals} loaded={loaded} />
+                </div>
               </div>
             ))}
           </div>
@@ -71,7 +102,11 @@ export default function DemoReportPage() {
                   <div className="border-t border-slate-500 w-full" />
                 </div>
                 {[40, 55, 45, 70, 65, 85, 95].map((height, i) => (
-                  <div key={i} className="w-full bg-gradient-to-t from-teal-600 to-teal-400 rounded-t-sm" style={{ height: `${height}%` }} />
+                  <div 
+                    key={i} 
+                    className="w-full bg-gradient-to-t from-teal-600 to-teal-400 rounded-t-sm transition-all duration-1000 ease-out" 
+                    style={{ height: loaded ? `${height}%` : '0%', transitionDelay: `${i * 100}ms` }} 
+                  />
                 ))}
               </div>
               <div className="flex justify-between mt-4 text-xs text-slate-500 font-medium">
@@ -91,10 +126,15 @@ export default function DemoReportPage() {
                   <div key={i}>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
                       <span>{item.reason}</span>
-                      <span>{item.percent}%</span>
+                      <span>
+                        <AnimatedNumber value={item.percent} suffix="%" decimals={0} loaded={loaded} />
+                      </span>
                     </div>
                     <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.percent}%` }} />
+                      <div 
+                        className={`h-full ${item.color} rounded-full transition-all duration-1000 ease-out`} 
+                        style={{ width: loaded ? `${item.percent}%` : '0%', transitionDelay: `${i * 150}ms` }} 
+                      />
                     </div>
                   </div>
                 ))}
@@ -106,11 +146,24 @@ export default function DemoReportPage() {
       </section>
 
       {/* Call to action */}
-      <section className="text-center py-10">
-        <h2 className="text-2xl font-bold text-white mb-4">Want these metrics for your facility?</h2>
-        <Link to="/contact" className="inline-flex bg-teal-600 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg shadow-[0_0_20px_rgba(13,148,136,0.3)] hover:bg-teal-500 transition-colors">
-          Schedule Your Assessment
-        </Link>
+      <section className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-10">
+        <div className="glass-card bento-card rounded-2xl p-10 md:p-14 text-center relative overflow-hidden group border border-teal-500/20 hover:border-teal-500/40 transition-all duration-500 shadow-2xl shadow-black/50">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-600/10 rounded-full blur-[60px] pointer-events-none group-hover:bg-teal-600/20 transition-colors" />
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Manrope, sans-serif' }}>
+              Want these metrics for your facility?
+            </h2>
+            <p className="text-slate-400 mb-8 max-w-lg mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Get a comprehensive revenue cycle audit and discover exactly how much revenue you're leaving on the table.
+            </p>
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-teal-600 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg shadow-lg shadow-teal-900/50 hover:bg-teal-500 hover:-translate-y-1 transition-all duration-300">
+              Schedule Your Assessment
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

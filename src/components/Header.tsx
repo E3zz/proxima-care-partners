@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import LogoIcon from './LogoIcon';
+import Logo from './Logo';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -29,42 +29,7 @@ export default function Header() {
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1.5 group shrink-0">
-          <LogoIcon className="w-12 h-12 drop-shadow-[0_0_15px_rgba(20,184,166,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(20,184,166,0.5)] transition-all duration-300" />
-          <div className="flex flex-col">
-            <div className="flex overflow-hidden">
-              {"Proxima Care".split("").map((char, i) => (
-                <span
-                  key={i}
-                  className="text-white font-bold text-lg leading-none tracking-tight block letter-animate"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    animationName: `letter-fly-${(i % 4) + 1}`,
-                    animationDelay: `${i * 40}ms`,
-                    whiteSpace: char === " " ? "pre" : "normal"
-                  }}
-                >
-                  {char}
-                </span>
-              ))}
-            </div>
-            <div className="flex overflow-hidden mt-0.5">
-              {"PARTNERS".split("").map((char, i) => (
-                <span
-                  key={i}
-                  className="text-teal-400 text-[10px] font-bold tracking-[0.2em] uppercase letter-animate"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    animationName: `letter-fly-${((i + 5) % 4) + 1}`,
-                    animationDelay: `${(i + 12) * 30}ms`
-                  }}
-                >
-                  {char}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Link>
+        <Logo className="shrink-0 scale-75 sm:scale-90 origin-left" />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary navigation">

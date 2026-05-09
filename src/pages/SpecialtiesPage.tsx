@@ -121,19 +121,20 @@ export default function SpecialtiesPage() {
             {specialties.map((s, i) => (
               <div
                 key={i}
-                className={`group relative rounded-xl cursor-pointer transition-all duration-500 overflow-hidden ${
+                className={`group relative rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden bento-card ${
                   activeSpecialty === i
-                    ? 'bg-teal-600/15 border border-teal-500/30 shadow-2xl shadow-teal-900/30'
+                    ? 'bg-teal-600/15 border border-teal-500/30 shadow-2xl shadow-teal-900/30 glow-teal'
                     : 'glass-card hover:border-teal-500/25'
                 } ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${i * 50 + 100}ms` }}
                 onClick={() => setActiveSpecialty(activeSpecialty === i ? null : i)}
               >
-                <div className="p-6">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${
-                    activeSpecialty === i ? 'bg-teal-500/25 border border-teal-500/30' : 'bg-white/6 border border-white/10 group-hover:bg-teal-500/15 group-hover:border-teal-500/20'
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 group-hover:bg-teal-500/10 rounded-full blur-[40px] pointer-events-none transition-colors" />
+                <div className="p-6 relative z-10">
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
+                    activeSpecialty === i ? 'bg-teal-500/25 border border-teal-500/30' : 'bg-teal-500/10 border border-teal-500/20'
                   }`}>
-                    <span className={`material-symbols-outlined text-[22px] transition-colors duration-300 ${activeSpecialty === i ? 'text-teal-300' : 'text-slate-400 group-hover:text-teal-400'}`}>
+                    <span className={`material-symbols-outlined text-[28px] icon-glow transition-colors duration-300 ${activeSpecialty === i ? 'text-teal-300' : 'text-teal-400'}`}>
                       {s.icon}
                     </span>
                   </div>

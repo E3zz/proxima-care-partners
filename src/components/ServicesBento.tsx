@@ -91,23 +91,23 @@ export default function ServicesBento() {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`bento-card rounded-xl ${service.span || ''} bg-white/4 border border-white/8 hover:bg-white/8 hover:border-teal-500/30 p-8 flex flex-col transition-all duration-700 ${
+              className={`glass-card bento-card rounded-2xl ${service.span || ''} p-8 flex flex-col relative overflow-hidden group transition-all duration-700 hover:border-teal-500/30 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${i * 90 + 200}ms` }}
             >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-[40px] pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
+
               {/* Icon */}
-              <div className="w-13 h-13 rounded-xl flex items-center justify-center mb-6 bg-white/8 border border-white/10"
-                style={{ width: '52px', height: '52px' }}
-              >
-                <span className="material-symbols-outlined text-[26px] text-teal-400">
+              <div className="relative z-10 w-14 h-14 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-6 group-hover:bg-teal-500/20 transition-colors">
+                <span className="material-symbols-outlined text-[28px] text-teal-400 icon-glow">
                   {service.icon}
                 </span>
               </div>
 
               {/* Title */}
               <h3
-                className="font-bold mb-3 text-white"
+                className="font-bold mb-3 text-white relative z-10"
                 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '19px', lineHeight: '1.4' }}
               >
                 {service.title}
@@ -115,14 +115,14 @@ export default function ServicesBento() {
 
               {/* Description */}
               <p
-                className="mb-6 leading-relaxed flex-1 text-slate-400"
+                className="mb-6 leading-relaxed flex-1 text-slate-400 relative z-10"
                 style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', lineHeight: '1.8' }}
               >
                 {service.description}
               </p>
 
               {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2 mb-5 relative z-10">
                 {service.features.map((f, j) => (
                   <span
                     key={j}
@@ -136,7 +136,7 @@ export default function ServicesBento() {
 
               {/* Learn More Link */}
               {service.learnMore && (
-                <Link to={service.linkTo} className="flex items-center gap-1.5 text-sm font-semibold group cursor-pointer text-teal-400 hover:text-teal-300 transition-colors">
+                <Link to={service.linkTo} className="flex items-center gap-1.5 text-sm font-semibold group cursor-pointer text-teal-400 hover:text-teal-300 transition-colors relative z-10 w-fit">
                   <span>{service.learnMore}</span>
                   <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">
                     arrow_forward

@@ -48,7 +48,7 @@ export default function Footer() {
                       <span
                         key={i}
                         className={`text-white text-[22px] leading-none tracking-tight block letter-animate ${isCare ? 'font-light opacity-90 text-teal-50' : 'font-extrabold'}`}
-                        style={{ 
+                        style={{
                           fontFamily: 'var(--font-heading)',
                           animationName: `letter-fly-${(i % 4) + 1}`,
                           animationDelay: `${i * 40}ms`,
@@ -65,7 +65,7 @@ export default function Footer() {
                     <span
                       key={i}
                       className="text-teal-400 text-[10px] font-bold uppercase letter-animate"
-                      style={{ 
+                      style={{
                         fontFamily: 'var(--font-heading)',
                         animationName: `letter-fly-${((i + 5) % 4) + 1}`,
                         animationDelay: `${(i + 12) * 30}ms`
@@ -85,7 +85,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group/item">
                 <span className="material-symbols-outlined text-teal-500 text-[20px] mt-0.5 group-hover/item:scale-110 transition-transform">location_on</span>
                 <span className="text-slate-400 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  1500 N Grant ST STE 5472<br />Denver, CO
+                  Denver, Colorado, USA
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm hover:text-teal-400 transition-colors cursor-pointer">

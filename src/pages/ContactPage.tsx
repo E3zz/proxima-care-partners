@@ -5,7 +5,7 @@ const contactInfo = [
   {
     icon: 'location_on',
     title: 'Corporate HQ',
-    lines: ['1500 N Grant ST STE 5472', 'Denver, CO 80203'],
+    lines: ['Denver, Colorado', 'USA'],
   },
   {
     icon: 'call',
@@ -32,7 +32,7 @@ function generateCalendar(year: number, month: number) {
   return cells;
 }
 
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export default function ContactPage() {
   const today = new Date();
@@ -96,32 +96,45 @@ export default function ContactPage() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {contactInfo.map((info, i) => (
-                  <div key={i} className="glass-card rounded-xl p-5 hover:border-teal-500/30 transition-colors">
-                    <span className="material-symbols-outlined text-teal-400 text-[24px] mb-3 block">{info.icon}</span>
-                    <h3 className="font-bold text-white text-sm mb-2" style={{ fontFamily: 'Manrope, sans-serif' }}>{info.title}</h3>
-                    {info.lines.map((line, j) => (
-                      <p key={j} className="text-slate-400 text-xs leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{line}</p>
-                    ))}
+                  <div key={i} className="glass-card bento-card relative overflow-hidden rounded-2xl p-6 hover:border-teal-500/30 transition-colors group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-[30px] pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-4">
+                        <span className="material-symbols-outlined text-teal-400 text-[22px] icon-glow">{info.icon}</span>
+                      </div>
+                      <h3 className="font-bold text-white text-sm mb-2" style={{ fontFamily: 'Manrope, sans-serif' }}>{info.title}</h3>
+                      {info.lines.map((line, j) => (
+                        <p key={j} className="text-slate-400 text-xs leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{line}</p>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden glass-card">
+            <a 
+              href="https://maps.google.com/?q=Denver+Colorado+USA" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="relative hidden lg:block group cursor-pointer"
+            >
+              <div className="rounded-2xl overflow-hidden glass-card transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRyl4erai06yes8w3ZYgbmD7Y3eMLXA6xGUAT_TH31SPWAKCWNdn_DUs5wUVHkxTbxP1Gsng3vJ3txBdyXMghnK3ek3jLJTsO1PhIJD3bL2uMz5FBtdCTSvxYDR8HyIo1FnHthX5N7SDcwOH4tU5xnQ4Jgma55J45P3X3H4XJ76YpZyKrkJZIxUeIMS33lRKVmQoiGu-4h1HiC6b75pbXt_sIxXwwZg14jhgk9lSng0bL0STm8iwzaezD_FtWwfvCraWfObpS81Q"
                   alt="Proxima Care Partners Denver HQ location map"
-                  className="w-full object-cover aspect-[4/3] opacity-50 grayscale contrast-125"
+                  className="w-full object-cover aspect-[4/3] opacity-50 grayscale contrast-125 group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-500"
                 />
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-[#051125] border border-teal-500/20 rounded-xl shadow-2xl p-5 flex flex-col items-center">
-                  <span className="material-symbols-outlined text-teal-500 text-[40px] mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>location_pin</span>
+                <div className="bg-[#051125] border border-teal-500/20 rounded-xl shadow-2xl p-5 flex flex-col items-center group-hover:border-teal-500/50 group-hover:-translate-y-2 transition-all duration-300">
+                  <span className="material-symbols-outlined text-teal-500 text-[40px] mb-2 group-hover:scale-110 transition-transform duration-300" style={{ fontVariationSettings: "'FILL' 1" }}>location_pin</span>
                   <p className="font-bold text-white text-sm" style={{ fontFamily: 'Manrope, sans-serif' }}>Proxima Care Partners HQ</p>
-                  <p className="text-slate-400 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>Downtown Denver Business District</p>
+                  <p className="text-slate-400 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>Denver, Colorado</p>
+                  <span className="text-teal-400 text-[10px] uppercase tracking-wider font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    Open in Maps <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -270,7 +283,7 @@ export default function ContactPage() {
                   </div>
                   {/* Day headers */}
                   <div className="grid grid-cols-7 text-center mb-2">
-                    {['S','M','T','W','T','F','S'].map((d, i) => (
+                    {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
                       <div key={i} className="text-[10px] font-bold text-slate-400 py-1" style={{ fontFamily: 'Inter, sans-serif' }}>{d}</div>
                     ))}
                   </div>
@@ -284,15 +297,14 @@ export default function ContactPage() {
                           key={i}
                           disabled={!cell.current}
                           onClick={() => cell.current && setSelectedDay(cell.day)}
-                          className={`py-1.5 text-xs rounded-full font-medium transition-all duration-150 ${
-                            isSelected
+                          className={`py-1.5 text-xs rounded-full font-medium transition-all duration-150 ${isSelected
                               ? 'bg-teal-600 text-white font-bold'
                               : isToday
-                              ? 'bg-teal-500/20 text-teal-400 font-bold ring-1 ring-teal-500/50'
-                              : cell.current
-                              ? 'text-slate-300 hover:bg-white/10 hover:text-white cursor-pointer'
-                              : 'text-slate-600 cursor-not-allowed'
-                          }`}
+                                ? 'bg-teal-500/20 text-teal-400 font-bold ring-1 ring-teal-500/50'
+                                : cell.current
+                                  ? 'text-slate-300 hover:bg-white/10 hover:text-white cursor-pointer'
+                                  : 'text-slate-600 cursor-not-allowed'
+                            }`}
                           style={{ fontFamily: 'Inter, sans-serif' }}
                           aria-label={cell.current ? `${MONTHS[calMonth]} ${cell.day}` : undefined}
                         >
@@ -311,11 +323,10 @@ export default function ContactPage() {
                         <button
                           key={t}
                           onClick={() => setSelectedTime(t)}
-                          className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${
-                            selectedTime === t
+                          className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${selectedTime === t
                               ? 'border-teal-500 bg-teal-500/20 text-teal-300'
                               : 'border-white/10 bg-white/5 text-slate-300 hover:border-teal-500/50 hover:bg-white/10 hover:text-teal-400'
-                          }`}
+                            }`}
                           style={{ fontFamily: 'Inter, sans-serif' }}
                         >
                           {t}

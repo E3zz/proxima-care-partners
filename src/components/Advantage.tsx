@@ -74,34 +74,36 @@ export default function Advantage() {
           {advantages.map((adv, i) => (
             <div
               key={i}
-              className={`glass-card rounded-xl p-7 flex flex-col group transition-all duration-500 cursor-default ${
+              className={`glass-card bento-card rounded-2xl p-7 flex flex-col relative overflow-hidden group transition-all duration-500 cursor-default hover:border-teal-500/30 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${i * 100 + 200}ms` }}
             >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-[30px] pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
+
               {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-teal-500/12 border border-teal-500/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-teal-500/20 transition-all duration-300">
-                <span className="material-symbols-outlined text-[28px] text-teal-400">
+              <div className="relative z-10 w-14 h-14 rounded-xl bg-teal-500/12 border border-teal-500/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-teal-500/20 transition-all duration-300">
+                <span className="material-symbols-outlined text-[28px] text-teal-400 icon-glow">
                   {adv.icon}
                 </span>
               </div>
 
               {/* Stat chip */}
               <span
-                className="inline-block text-xs font-bold text-teal-300 bg-teal-500/10 border border-teal-500/15 px-2.5 py-1 rounded-full mb-4 self-start"
+                className="relative z-10 inline-block text-xs font-bold text-teal-300 bg-teal-500/10 border border-teal-500/15 px-2.5 py-1 rounded-full mb-4 self-start"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {adv.stat}
               </span>
 
               <h3
-                className="font-bold text-white mb-3"
+                className="relative z-10 font-bold text-white mb-3"
                 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '18px' }}
               >
                 {adv.title}
               </h3>
               <p
-                className="text-slate-400 leading-relaxed text-sm flex-1"
+                className="relative z-10 text-slate-400 leading-relaxed text-sm flex-1"
                 style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.8' }}
               >
                 {adv.description}

@@ -59,13 +59,14 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`glass-card rounded-xl p-8 flex flex-col transition-all duration-500 ${
+              className={`glass-card bento-card rounded-2xl p-8 flex flex-col relative overflow-hidden group transition-all duration-500 hover:border-teal-500/30 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${i * 120 + 200}ms` }}
             >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-[40px] pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
               {/* Stars */}
-              <div className="flex gap-1 mb-5">
+              <div className="flex gap-1 mb-5 relative z-10">
                 {Array.from({ length: t.rating }).map((_, j) => (
                   <span key={j} className="material-symbols-outlined text-amber-400 text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                     star
@@ -75,20 +76,20 @@ export default function Testimonials() {
 
               {/* Quote */}
               <blockquote
-                className="text-slate-300 leading-relaxed mb-6 flex-1 italic"
+                className="text-slate-300 leading-relaxed mb-6 flex-1 italic relative z-10"
                 style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: '1.8' }}
               >
                 "{t.quote}"
               </blockquote>
 
               {/* Stat Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-teal-500/10 border border-teal-500/15 text-teal-300 rounded-full text-xs font-bold mb-6 self-start">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-teal-500/10 border border-teal-500/15 text-teal-300 rounded-full text-xs font-bold mb-6 self-start relative z-10">
                 <span className="material-symbols-outlined text-[14px]">trending_up</span>
                 {t.stat}
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-5 border-t border-white/8">
+              <div className="flex items-center gap-3 pt-5 border-t border-white/8 relative z-10">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-lg shadow-teal-900/40">
                   {t.avatar}
                 </div>

@@ -41,24 +41,25 @@ export default function Specialties() {
           {specialties.map((s, i) => (
             <div
               key={i}
-              className={`group glass-card rounded-xl p-6 hover:border-teal-500/30 transition-all duration-500 cursor-default ${
+              className={`group glass-card bento-card rounded-2xl p-6 relative overflow-hidden hover:border-teal-500/30 transition-all duration-500 cursor-default ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${i * 60 + 200}ms` }}
             >
-              <div className="w-12 h-12 bg-white/6 border border-white/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-500/15 group-hover:border-teal-500/25 transition-all duration-300">
-                <span className="material-symbols-outlined text-[22px] text-slate-400 group-hover:text-teal-400 transition-colors duration-300">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-[30px] pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
+              <div className="relative z-10 w-12 h-12 bg-teal-500/10 border border-teal-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-500/20 transition-all duration-300">
+                <span className="material-symbols-outlined text-[22px] text-teal-400 group-hover:text-teal-300 transition-colors duration-300 icon-glow">
                   {s.icon}
                 </span>
               </div>
               <h3
-                className="font-bold text-white mb-2 group-hover:text-teal-300 transition-colors duration-300"
+                className="relative z-10 font-bold text-white mb-2 group-hover:text-teal-300 transition-colors duration-300"
                 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '16px' }}
               >
                 {s.label}
               </h3>
               <p
-                className="text-slate-500 group-hover:text-slate-400 text-sm leading-relaxed transition-colors duration-300"
+                className="relative z-10 text-slate-500 group-hover:text-slate-400 text-sm leading-relaxed transition-colors duration-300"
                 style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.7' }}
               >
                 {s.description}

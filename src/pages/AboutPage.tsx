@@ -313,22 +313,22 @@ export default function AboutPage() {
             ].map((v, i) => (
               <div
                 key={i}
-                className={`group relative rounded-2xl p-7 border transition-all duration-700 cursor-default overflow-hidden bg-white/5 border-white/8 hover:bg-white/8 hover:border-teal-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-teal-900/30 ${valuesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                className={`group relative rounded-2xl p-7 transition-all duration-700 cursor-default overflow-hidden glass-card bento-card hover:border-teal-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-teal-900/30 ${valuesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: `${v.delay}ms` }}
               >
                 {/* Glow blob on hover */}
                 <div className="absolute -top-8 -right-8 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Icon */}
-                <div className="relative w-12 h-12 rounded-xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center mb-5 group-hover:bg-teal-600/25 group-hover:border-teal-400/40 transition-all duration-300">
-                  <span className="material-symbols-outlined text-[24px] text-teal-400 group-hover:text-teal-300 transition-colors duration-300">
+                <div className="relative w-12 h-12 rounded-xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center mb-5 group-hover:bg-teal-600/25 group-hover:border-teal-400/40 transition-all duration-300 z-10">
+                  <span className="material-symbols-outlined text-[24px] text-teal-400 group-hover:text-teal-300 transition-colors duration-300 icon-glow">
                     {v.icon}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="font-bold text-white mb-3 group-hover:text-teal-50 transition-colors duration-300"
+                  className="font-bold text-white mb-3 group-hover:text-teal-50 transition-colors duration-300 relative z-10"
                   style={{ fontFamily: 'Manrope, sans-serif', fontSize: '19px' }}
                 >
                   {v.title}
@@ -336,7 +336,7 @@ export default function AboutPage() {
 
                 {/* Description */}
                 <p
-                  className="text-slate-400 text-sm leading-relaxed mb-5 group-hover:text-slate-300 transition-colors duration-300"
+                  className="text-slate-400 text-sm leading-relaxed mb-5 group-hover:text-slate-300 transition-colors duration-300 relative z-10"
                   style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.7' }}
                 >
                   {v.desc}

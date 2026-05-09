@@ -229,15 +229,16 @@ export default function ServicesPage() {
             {services.map((service, i) => (
               <div
                 key={i}
-                className={`rounded-2xl p-8 flex flex-col transition-all duration-700 glass-card ${service.highlight
-                  ? 'lg:col-span-2 shadow-lg relative overflow-hidden'
+                className={`glass-card rounded-2xl p-8 bento-card flex flex-col relative overflow-hidden transition-all duration-700 ${service.highlight
+                  ? 'lg:col-span-2 shadow-lg'
                   : ''
                   } ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${i * 80 + 100}ms` }}
               >
-                <div className="flex items-start gap-5 relative z-10">
-                  <div className="w-14 h-14 rounded-xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center flex-shrink-0">
-                    <span className="material-symbols-outlined text-[28px] text-teal-400">{service.icon}</span>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-[40px] pointer-events-none" />
+                <div className="flex flex-col lg:flex-row items-start gap-6 relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-[28px] text-teal-400 icon-glow">{service.icon}</span>
                   </div>
                   <div className="flex-1">
                     <h2

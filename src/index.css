@@ -201,52 +201,131 @@
   }
 
   @keyframes drawP {
-    to { stroke-dashoffset: 0; }
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 
   @keyframes glowP {
-    0% { filter: drop-shadow(0 0 2px rgba(45, 212, 191, 0.3)); }
-    100% { filter: drop-shadow(0 0 12px rgba(45, 212, 191, 0.8)); }
+    0% {
+      filter: drop-shadow(0 0 2px rgba(45, 212, 191, 0.3));
+    }
+
+    100% {
+      filter: drop-shadow(0 0 12px rgba(45, 212, 191, 0.8));
+    }
   }
 
   @keyframes drawTube {
-    to { stroke-dashoffset: 0; }
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 
   @keyframes pulseEnergy {
-    0% { stroke-dashoffset: 110; opacity: 1; filter: drop-shadow(0 0 6px #5eead4); }
-    80% { stroke-dashoffset: -10; opacity: 1; filter: drop-shadow(0 0 10px #5eead4); }
-    100% { stroke-dashoffset: -10; opacity: 0; }
+    0% {
+      stroke-dashoffset: 110;
+      opacity: 1;
+      filter: drop-shadow(0 0 6px #5eead4);
+    }
+
+    80% {
+      stroke-dashoffset: -10;
+      opacity: 1;
+      filter: drop-shadow(0 0 10px #5eead4);
+    }
+
+    100% {
+      stroke-dashoffset: -10;
+      opacity: 0;
+    }
   }
 
   @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    10% { transform: scale(1.15); }
-    20% { transform: scale(1); }
-    30% { transform: scale(1.15); }
-    40% { transform: scale(1); }
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    10% {
+      transform: scale(1.15);
+    }
+
+    20% {
+      transform: scale(1);
+    }
+
+    30% {
+      transform: scale(1.15);
+    }
+
+    40% {
+      transform: scale(1);
+    }
   }
 
   @keyframes innerGlow {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #5eead4); }
-    15%, 35% { transform: scale(1.3); filter: drop-shadow(0 0 6px #5eead4); }
+
+    0%,
+    100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 2px #5eead4);
+    }
+
+    15%,
+    35% {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 6px #5eead4);
+    }
   }
 
   @keyframes letter-fly-1 {
-    0% { opacity: 0; transform: translate(-20px, -20px) rotate(-15deg); }
-    100% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    0% {
+      opacity: 0;
+      transform: translate(-20px, -20px) rotate(-15deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0) rotate(0);
+    }
   }
+
   @keyframes letter-fly-2 {
-    0% { opacity: 0; transform: translate(20px, -10px) rotate(10deg); }
-    100% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    0% {
+      opacity: 0;
+      transform: translate(20px, -10px) rotate(10deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0) rotate(0);
+    }
   }
+
   @keyframes letter-fly-3 {
-    0% { opacity: 0; transform: translate(-10px, 20px) rotate(-5deg); }
-    100% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    0% {
+      opacity: 0;
+      transform: translate(-10px, 20px) rotate(-5deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0) rotate(0);
+    }
   }
+
   @keyframes letter-fly-4 {
-    0% { opacity: 0; transform: translate(15px, 15px) rotate(12deg); }
-    100% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    0% {
+      opacity: 0;
+      transform: translate(15px, 15px) rotate(12deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0) rotate(0);
+    }
   }
 
   .letter-animate {
@@ -301,12 +380,6 @@
     animation-delay: 600ms;
   }
 
-  /* ── Design tokens ────────────────────────────────────── */
-
-  /* Subtle dot/grid texture removed to match Demo Report clean background */
-  .grid-texture {
-    /* Intentionally blank to clean up the site background */
-  }
 
   /* Radial teal glow - drop on any section wrapper */
   .glow-teal {
@@ -392,6 +465,7 @@
     position: relative;
     overflow: hidden;
   }
+
   .btn-shine::after {
     content: '';
     position: absolute;
@@ -399,20 +473,30 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
     animation: shine-sweep 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @keyframes shine-sweep {
-    0% { top: -150%; }
-    20% { top: 200%; }
-    100% { top: 200%; }
+    0% {
+      top: -150%;
+    }
+
+    20% {
+      top: 200%;
+    }
+
+    100% {
+      top: 200%;
+    }
   }
 }
+
 @keyframes dash {
   from {
     stroke-dashoffset: 100;
   }
+
   to {
     stroke-dashoffset: 0;
   }
@@ -423,6 +507,7 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
 .custom-time-input::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
 }

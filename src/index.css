@@ -303,12 +303,9 @@
 
   /* ── Design tokens ────────────────────────────────────── */
 
-  /* Subtle dot/grid texture for dark sections */
+  /* Subtle dot/grid texture removed to match Demo Report clean background */
   .grid-texture {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 64px 64px;
+    /* Intentionally blank to clean up the site background */
   }
 
   /* Radial teal glow - drop on any section wrapper */

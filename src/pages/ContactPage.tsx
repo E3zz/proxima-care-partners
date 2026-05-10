@@ -233,8 +233,9 @@ export default function ContactPage() {
       <section className="py-24 bg-[#051125] section-divider">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-7 glass-card rounded-2xl p-8 lg:p-10 shadow-lg">
-              {submitted ? (
+            <div className="lg:col-span-7 flex flex-col gap-6">
+              <div className="glass-card rounded-2xl p-8 lg:p-10 shadow-lg">
+                {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-16">
                   <div className="w-20 h-20 bg-teal-500/10 border border-teal-500/20 rounded-full flex items-center justify-center mb-6">
                     <span className="material-symbols-outlined text-teal-400 text-[40px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
@@ -351,6 +352,24 @@ export default function ContactPage() {
                   </form>
                 </>
               )}
+              </div>
+
+              {/* Urgent Help card */}
+              <div className="glass-card rounded-2xl p-6 flex items-start gap-4">
+                <div className="w-10 h-10 bg-teal-500/15 border border-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="material-symbols-outlined text-teal-400 text-[22px]">contact_support</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white mb-1" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '16px' }}>Need Urgent Help?</h4>
+                  <p className="text-slate-400 text-sm mb-3 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Our emergency audit team is available for critical compliance issues 24/7.
+                  </p>
+                  <Link to="/emergency" className="text-teal-400 font-bold text-sm hover:text-teal-300 transition-colors flex items-center gap-1 group" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Contact Emergency Desk
+                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-6">
@@ -494,23 +513,6 @@ export default function ContactPage() {
                     </button>
                   </>
                 )}
-              </div>
-
-              {/* Urgent Help card */}
-              <div className="glass-card rounded-2xl p-6 flex items-start gap-4">
-                <div className="w-10 h-10 bg-teal-500/15 border border-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <span className="material-symbols-outlined text-teal-400 text-[22px]">contact_support</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-white mb-1" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '16px' }}>Need Urgent Help?</h4>
-                  <p className="text-slate-400 text-sm mb-3 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Our emergency audit team is available for critical compliance issues 24/7.
-                  </p>
-                  <Link to="/emergency" className="text-teal-400 font-bold text-sm hover:text-teal-300 transition-colors flex items-center gap-1 group" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Contact Emergency Desk
-                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

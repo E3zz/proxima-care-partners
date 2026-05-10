@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; padding: 0; background-color: #030d1a; font-family: 'Inter', Arial, sans-serif; }
+        .container { max-width: 600px; margin: 40px auto; background: #051125; border: 1px solid rgba(20, 184, 166, 0.2); border-radius: 16px; overflow: hidden; }
+        .header { background: rgba(20, 184, 166, 0.1); padding: 30px; text-align: center; border-bottom: 1px solid rgba(20, 184, 166, 0.2); }
+        .logo { font-family: 'Manrope', Arial, sans-serif; font-size: 28px; font-weight: bold; color: #ffffff; margin: 0; }
+        .logo span { color: #14b8a6; }
+        .content { padding: 40px 30px; }
+        .title { color: #ffffff; font-size: 20px; font-weight: bold; margin-top: 0; margin-bottom: 24px; font-family: 'Manrope', Arial, sans-serif; }
+        .field { margin-bottom: 20px; background: rgba(255, 255, 255, 0.02); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #14b8a6; font-weight: bold; margin-bottom: 6px; display: block; }
+        .value { color: #e2e8f0; font-size: 15px; line-height: 1.6; margin: 0; }
+        .footer { padding: 24px 30px; text-align: center; background: #030d1a; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer p { color: #64748b; font-size: 12px; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Proxima <span>Care</span></h1>
+        </div>
+        <div class="content">
+            <h2 class="title">New Website Inquiry</h2>
+            
+            <div class="field">
+                <span class="label">Full Name</span>
+                <p class="value">{{name}}</p>
+            </div>
+            
+            <div class="field">
+                <span class="label">Email Address</span>
+                <p class="value">{{email}}</p>
+            </div>
+            
+            <div class="field">
+                <span class="label">Organization</span>
+                <p class="value">{{organization}}</p>
+            </div>
+            
+            <div class="field">
+                <span class="label">Service Requested</span>
+                <p class="value">{{service}}</p>
+            </div>
+            
+            <div class="field">
+                <span class="label">Message</span>
+                <p class="value">{{message}}</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>This is an automated notification from your Proxima Care Partners platform.</p>
+        </div>
+    </div>
+</body>
+</html>

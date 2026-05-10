@@ -17,6 +17,7 @@ import TermsOfServicePage from './pages/TermsOfServicePage';
 import HipaaPolicyPage from './pages/HipaaPolicyPage';
 import BillingFaqsPage from './pages/BillingFaqsPage';
 import SecurityPage from './pages/SecurityPage';
+import EmergencyContactPage from './pages/EmergencyContactPage';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -47,6 +48,7 @@ function AppLayout() {
           <Route path="/hipaa-policy" element={<HipaaPolicyPage />} />
           <Route path="/billing-faqs" element={<BillingFaqsPage />} />
           <Route path="/security" element={<SecurityPage />} />
+          <Route path="/emergency" element={<EmergencyContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

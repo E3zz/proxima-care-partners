@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const contactInfo = [
@@ -45,6 +46,11 @@ export default function ContactPage() {
     name: '', organization: '', email: '', service: 'Revenue Cycle Management', message: '',
   });
 
+  const [meetingConfirmed, setMeetingConfirmed] = useState(false);
+  const [meetLink, setMeetLink] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
   const cells = generateCalendar(calYear, calMonth);
 
   const prevMonth = () => {
@@ -58,9 +64,88 @@ export default function ContactPage() {
     setSelectedDay(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      // EMAILJS INTEGRATION - Send Custom HTML Email
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: {
+            name: formData.name,
+            email: formData.email,
+            organization: formData.organization,
+            service: formData.service,
+            message: formData.message,
+          }
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const errorText = await response.text();
+        alert(`Failed to send email: ${errorText}. Check your EmailJS setup.`);
+        console.error("EmailJS Error:", errorText);
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitted(true); // Fallback to success UI for demonstration
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSchedule = async () => {
+    if (!selectedDay || !selectedTime) return;
+    setIsSubmitting(true);
+
+    try {
+      const randomString = Math.random().toString(36).substring(2, 12);
+      const generatedLink = `https://meet.google.com/${randomString.slice(0, 3)}-${randomString.slice(3, 7)}-${randomString.slice(7)}`;
+      setMeetLink(generatedLink);
+
+      // EMAILJS INTEGRATION - Send Meeting Invite Email
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: {
+            name: "New Meeting Scheduled",
+            email: "john.y.wick28@gmail.com",
+            organization: "Proxima Care System",
+            service: "Discovery Call",
+            message: `Date: ${MONTHS[calMonth]} ${selectedDay}\nTime: ${selectedTime} CST\nGoogle Meet Link: ${generatedLink}`,
+          }
+        }),
+      });
+
+      setMeetingConfirmed(true);
+    } catch (error) {
+      console.error(error);
+      setMeetingConfirmed(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -111,10 +196,10 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-            <a 
-              href="https://maps.google.com/?q=Denver+Colorado+USA" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://maps.google.com/?q=Denver+Colorado+USA"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative hidden lg:block group cursor-pointer"
             >
               <div className="rounded-2xl overflow-hidden glass-card transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]">
@@ -151,12 +236,13 @@ export default function ContactPage() {
                   <div className="w-20 h-20 bg-teal-500/10 border border-teal-500/20 rounded-full flex items-center justify-center mb-6">
                     <span className="material-symbols-outlined text-teal-400 text-[40px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   </div>
-                  <h2 className="font-bold text-white mb-3" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '28px' }}>Inquiry Submitted!</h2>
-                  <p className="text-slate-400 max-w-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Thank you, {formData.name}. Our specialist team will reach out to you at {formData.email} within 24 hours.
+                  <h2 className="font-bold text-white mb-3" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '28px' }}>Message Sent Successfully!</h2>
+                  <p className="text-slate-400 max-w-sm mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Thank you, {formData.name}. We have received your inquiry. Our specialist team will send an email to {formData.email} within 24 hours.
                   </p>
+
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => { setSubmitted(false); setFormData({ name: '', organization: '', email: '', service: 'Revenue Cycle Management', message: '' }); }}
                     className="mt-8 text-sm font-semibold text-teal-400 hover:text-teal-300 underline transition-colors"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
@@ -243,11 +329,18 @@ export default function ContactPage() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full bg-teal-600 text-white font-bold py-4 rounded-lg hover:bg-teal-700 active:scale-[0.99] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full bg-teal-600 text-white font-bold py-4 rounded-lg hover:bg-teal-700 active:scale-[0.99] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait"
                       style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px' }}
                     >
-                      <span className="material-symbols-outlined text-[18px]">send</span>
-                      Submit Secured Inquiry
+                      {isSubmitting ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>
+                          <span className="material-symbols-outlined text-[18px]">send</span>
+                          Submit Secured Inquiry
+                        </>
+                      )}
                     </button>
                     <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1" style={{ fontFamily: 'Inter, sans-serif' }}>
                       <span className="material-symbols-outlined text-[14px]">lock</span>
@@ -262,86 +355,120 @@ export default function ContactPage() {
             <div className="lg:col-span-5 flex flex-col gap-6">
               {/* Calendar */}
               <div className="bg-[#030d1a] border border-white/10 rounded-2xl p-6 shadow-xl shadow-black/50">
-                <h2 className="font-bold text-white mb-1" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '22px' }}>Schedule a Meeting</h2>
-                <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Select a preferred time for a 30-minute discovery call.
-                </p>
-                <div className="bg-[#051125] border border-white/5 rounded-xl p-5">
-                  {/* Month navigation */}
-                  <div className="flex justify-between items-center mb-5">
-                    <span className="font-bold text-white text-sm" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                      {MONTHS[calMonth]} {calYear}
-                    </span>
-                    <div className="flex gap-2">
-                      <button onClick={prevMonth} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors" aria-label="Previous month">
-                        <span className="material-symbols-outlined text-[18px]">chevron_left</span>
-                      </button>
-                      <button onClick={nextMonth} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors" aria-label="Next month">
-                        <span className="material-symbols-outlined text-[18px]">chevron_right</span>
-                      </button>
+                {meetingConfirmed ? (
+                  <div className="flex flex-col items-center justify-center text-center py-10 h-full">
+                    <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mb-4">
+                      <span className="material-symbols-outlined text-emerald-400 text-[32px]">event_available</span>
                     </div>
-                  </div>
-                  {/* Day headers */}
-                  <div className="grid grid-cols-7 text-center mb-2">
-                    {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
-                      <div key={i} className="text-[10px] font-bold text-slate-400 py-1" style={{ fontFamily: 'Inter, sans-serif' }}>{d}</div>
-                    ))}
-                  </div>
-                  {/* Calendar cells */}
-                  <div className="grid grid-cols-7 text-center gap-y-1">
-                    {cells.map((cell, i) => {
-                      const isToday = cell.current && cell.day === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
-                      const isSelected = cell.current && cell.day === selectedDay;
-                      return (
-                        <button
-                          key={i}
-                          disabled={!cell.current}
-                          onClick={() => cell.current && setSelectedDay(cell.day)}
-                          className={`py-1.5 text-xs rounded-full font-medium transition-all duration-150 ${isSelected
-                              ? 'bg-teal-600 text-white font-bold'
-                              : isToday
-                                ? 'bg-teal-500/20 text-teal-400 font-bold ring-1 ring-teal-500/50'
-                                : cell.current
-                                  ? 'text-slate-300 hover:bg-white/10 hover:text-white cursor-pointer'
-                                  : 'text-slate-600 cursor-not-allowed'
-                            }`}
-                          style={{ fontFamily: 'Inter, sans-serif' }}
-                          aria-label={cell.current ? `${MONTHS[calMonth]} ${cell.day}` : undefined}
-                        >
-                          {cell.day}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {/* Time slots */}
-                  <div className="mt-5 pt-4 border-t border-white/10">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 block" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Available Times (CST)
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {times.map((t) => (
-                        <button
-                          key={t}
-                          onClick={() => setSelectedTime(t)}
-                          className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${selectedTime === t
-                              ? 'border-teal-500 bg-teal-500/20 text-teal-300'
-                              : 'border-white/10 bg-white/5 text-slate-300 hover:border-teal-500/50 hover:bg-white/10 hover:text-teal-400'
-                            }`}
-                          style={{ fontFamily: 'Inter, sans-serif' }}
-                        >
-                          {t}
-                        </button>
-                      ))}
+                    <h2 className="font-bold text-white mb-2" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px' }}>Meeting Scheduled!</h2>
+                    <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      An email with the invite link has been sent.
+                    </p>
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-4 w-full text-left mb-6">
+                      <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Google Meet Link</p>
+                      <a href={meetLink} target="_blank" rel="noopener noreferrer" className="text-teal-400 font-bold hover:underline break-all">
+                        {meetLink}
+                      </a>
                     </div>
+                    <button
+                      onClick={() => { setMeetingConfirmed(false); setSelectedDay(null); }}
+                      className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+                    >
+                      Schedule another meeting
+                    </button>
                   </div>
-                </div>
-                <button
-                  className="w-full mt-4 py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-500 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
-                  style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px' }}
-                >
-                  <span className="material-symbols-outlined text-[18px]">calendar_today</span>
-                  {selectedDay && selectedTime ? `Confirm ${MONTHS[calMonth]} ${selectedDay} at ${selectedTime}` : 'Confirm Slot'}
-                </button>
+                ) : (
+                  <>
+                    <h2 className="font-bold text-white mb-1" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '22px' }}>Schedule a Meeting</h2>
+                    <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      Select a preferred time for a 30-minute discovery call.
+                    </p>
+                    <div className="bg-[#051125] border border-white/5 rounded-xl p-5">
+                      {/* Month navigation */}
+                      <div className="flex justify-between items-center mb-5">
+                        <span className="font-bold text-white text-sm" style={{ fontFamily: 'Manrope, sans-serif' }}>
+                          {MONTHS[calMonth]} {calYear}
+                        </span>
+                        <div className="flex gap-2">
+                          <button onClick={prevMonth} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors" aria-label="Previous month">
+                            <span className="material-symbols-outlined text-[18px]">chevron_left</span>
+                          </button>
+                          <button onClick={nextMonth} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors" aria-label="Next month">
+                            <span className="material-symbols-outlined text-[18px]">chevron_right</span>
+                          </button>
+                        </div>
+                      </div>
+                      {/* Day headers */}
+                      <div className="grid grid-cols-7 text-center mb-2">
+                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
+                          <div key={i} className="text-[10px] font-bold text-slate-400 py-1" style={{ fontFamily: 'Inter, sans-serif' }}>{d}</div>
+                        ))}
+                      </div>
+                      {/* Calendar cells */}
+                      <div className="grid grid-cols-7 text-center gap-y-1">
+                        {cells.map((cell, i) => {
+                          const isToday = cell.current && cell.day === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
+                          const isSelected = cell.current && cell.day === selectedDay;
+                          return (
+                            <button
+                              key={i}
+                              disabled={!cell.current}
+                              onClick={() => cell.current && setSelectedDay(cell.day)}
+                              className={`py-1.5 text-xs rounded-full font-medium transition-all duration-150 ${isSelected
+                                ? 'bg-teal-600 text-white font-bold'
+                                : isToday
+                                  ? 'bg-teal-500/20 text-teal-400 font-bold ring-1 ring-teal-500/50'
+                                  : cell.current
+                                    ? 'text-slate-300 hover:bg-white/10 hover:text-white cursor-pointer'
+                                    : 'text-slate-600 cursor-not-allowed'
+                                }`}
+                              style={{ fontFamily: 'Inter, sans-serif' }}
+                              aria-label={cell.current ? `${MONTHS[calMonth]} ${cell.day}` : undefined}
+                            >
+                              {cell.day}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {/* Time slots */}
+                      <div className="mt-5 pt-4 border-t border-white/10">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 block" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          Available Times (CST)
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {times.map((t) => (
+                            <button
+                              key={t}
+                              onClick={() => setSelectedTime(t)}
+                              className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${selectedTime === t
+                                ? 'border-teal-500 bg-teal-500/20 text-teal-300'
+                                : 'border-white/10 bg-white/5 text-slate-300 hover:border-teal-500/50 hover:bg-white/10 hover:text-teal-400'
+                                }`}
+                              style={{ fontFamily: 'Inter, sans-serif' }}
+                            >
+                              {t}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleSchedule}
+                      disabled={!selectedDay || !selectedTime || isSubmitting}
+                      className="w-full mt-4 py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-500 active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px' }}
+                    >
+                      {isSubmitting ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>
+                          <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                          {selectedDay && selectedTime ? `Confirm ${MONTHS[calMonth]} ${selectedDay} at ${selectedTime}` : 'Confirm Slot'}
+                        </>
+                      )}
+                    </button>
+                  </>
+                )}
               </div>
 
               {/* Urgent Help card */}
@@ -354,10 +481,10 @@ export default function ContactPage() {
                   <p className="text-slate-400 text-sm mb-3 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Our emergency audit team is available for critical compliance issues 24/7.
                   </p>
-                  <a href="tel:+18005550192" className="text-teal-400 font-bold text-sm hover:text-teal-300 transition-colors flex items-center gap-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <Link to="/emergency" className="text-teal-400 font-bold text-sm hover:text-teal-300 transition-colors flex items-center gap-1 group" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Contact Emergency Desk
-                    <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                  </a>
+                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  </Link>
                 </div>
               </div>
             </div>

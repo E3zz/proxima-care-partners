@@ -39,12 +39,12 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-[13px] font-medium uppercase tracking-[0.1em] transition-all duration-200 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${isActive
-                  ? 'text-teal-400 after:!w-full'
-                  : 'text-slate-300 hover:text-white'
+                `text-[14px] font-semibold transition-all duration-200 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-full ${isActive
+                  ? 'text-white after:!w-full'
+                  : 'text-slate-400 hover:text-white'
                 }`
               }
-              style={{ fontFamily: 'Manrope, sans-serif' }}
+              style={{ fontFamily: 'Inter, sans-serif' }}
             >
               {link.label}
             </NavLink>
@@ -55,14 +55,16 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="hidden lg:flex items-center gap-2 border border-white/10 bg-white/5 px-5 py-2 text-[11px] uppercase tracking-wider font-bold text-slate-300 hover:bg-white/10 hover:border-teal-500/40 hover:text-teal-300 transition-all duration-200 rounded-lg"
+            className="hidden lg:flex items-center gap-2 border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-semibold text-slate-300 hover:bg-white/10 hover:border-teal-500/40 hover:text-white transition-all duration-200 rounded-lg"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            <span className="material-symbols-outlined text-[15px]">calendar_today</span>
+            <span className="material-symbols-outlined text-[16px]">calendar_today</span>
             Schedule a Meeting
           </Link>
           <Link
             to="/contact"
-            className="hidden sm:flex bg-teal-600 text-white px-6 py-2.5 text-[11px] uppercase tracking-wider font-bold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-lg shadow-teal-900/50 rounded-lg whitespace-nowrap"
+            className="hidden sm:flex bg-teal-600 text-white px-5 py-2 text-[13px] font-semibold hover:bg-teal-500 active:scale-95 transition-all duration-200 shadow-lg shadow-teal-900/50 rounded-lg whitespace-nowrap"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Contact Us
           </Link>
@@ -90,8 +92,9 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-[13px] font-medium uppercase tracking-[0.1em] py-1 transition-colors ${isActive ? 'text-teal-400' : 'text-slate-300 hover:text-teal-300'}`
+                `text-[15px] font-semibold py-2 transition-colors ${isActive ? 'text-teal-400' : 'text-slate-400 hover:text-white'}`
               }
+              style={{ fontFamily: 'Inter, sans-serif' }}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}

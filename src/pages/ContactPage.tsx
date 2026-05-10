@@ -11,7 +11,7 @@ const contactInfo = [
   {
     icon: 'call',
     title: 'Direct Line',
-    lines: ['+1 (800) 555-0192', 'Mon–Fri, 8am–6pm CST'],
+    lines: ['+1 (800) 555-0192', 'Mon–Fri, 8am–6pm EST'],
   },
   {
     icon: 'mail',
@@ -41,15 +41,15 @@ export default function ContactPage() {
   const [calYear, setCalYear] = useState(today.getFullYear());
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>('02:00 PM');
+  const [customTimeVal, setCustomTimeVal] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '', organization: '', email: '', service: 'Revenue Cycle Management', message: '',
   });
 
+  const [meetingEmail, setMeetingEmail] = useState('');
   const [meetingConfirmed, setMeetingConfirmed] = useState(false);
-  const [meetLink, setMeetLink] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
 
   const cells = generateCalendar(calYear, calMonth);
 
@@ -64,21 +64,32 @@ export default function ContactPage() {
     setSelectedDay(null);
   };
 
+  const handleCustomTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setCustomTimeVal(val);
+    if (!val) {
+      setSelectedTime(null);
+      return;
+    }
+    const [h, m] = val.split(':');
+    let hour = parseInt(h, 10);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12;
+    setSelectedTime(`${hour.toString().padStart(2, '0')}:${m} ${ampm}`);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // EMAILJS INTEGRATION - Send Custom HTML Email
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           service_id: serviceId,
           template_id: templateId,
@@ -98,31 +109,25 @@ export default function ContactPage() {
       } else {
         const errorText = await response.text();
         alert(`Failed to send email: ${errorText}. Check your EmailJS setup.`);
-        console.error("EmailJS Error:", errorText);
       }
     } catch (error) {
       console.error(error);
-      setSubmitted(true); // Fallback to success UI for demonstration
+      setSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleSchedule = async () => {
-    if (!selectedDay || !selectedTime) return;
+    if (!selectedDay || !selectedTime || !meetingEmail) return;
     setIsSubmitting(true);
 
     try {
-      const randomString = Math.random().toString(36).substring(2, 12);
-      const generatedLink = `https://meet.google.com/${randomString.slice(0, 3)}-${randomString.slice(3, 7)}-${randomString.slice(7)}`;
-      setMeetLink(generatedLink);
-
-      // EMAILJS INTEGRATION - Send Meeting Invite Email
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -130,14 +135,19 @@ export default function ContactPage() {
           template_id: templateId,
           user_id: publicKey,
           template_params: {
-            name: "New Meeting Scheduled",
-            email: "john.y.wick28@gmail.com",
+            name: "New Meeting Requested",
+            email: meetingEmail,
             organization: "Proxima Care System",
             service: "Discovery Call",
-            message: `Date: ${MONTHS[calMonth]} ${selectedDay}\nTime: ${selectedTime} CST\nGoogle Meet Link: ${generatedLink}`,
+            message: `We have received your meeting request for ${MONTHS[calMonth]} ${selectedDay} at ${selectedTime} EST. We will start the meet and invite you when it starts.`,
           }
         }),
       });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("EmailJS Error:", errorText);
+      }
 
       setMeetingConfirmed(true);
     } catch (error) {
@@ -157,7 +167,6 @@ export default function ContactPage() {
         canonical="https://www.proximacarepartners.com/contact"
       />
 
-      {/* Page Hero */}
       <section className="pt-36 pb-20 bg-[#030d1a] grid-texture glow-teal relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-500/8 rounded-full blur-[100px]" />
@@ -170,10 +179,7 @@ export default function ContactPage() {
                 <span className="material-symbols-outlined text-[15px]">support_agent</span>
                 Global Support
               </div>
-              <h1
-                className="font-bold text-white mb-6 leading-tight"
-                style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(38px, 5vw, 56px)', letterSpacing: '-0.02em' }}
-              >
+              <h1 className="font-bold text-white mb-6 leading-tight" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(38px, 5vw, 56px)', letterSpacing: '-0.02em' }}>
                 Expert Revenue Cycle Partnership
               </h1>
               <p className="text-slate-400 mb-10 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: '1.7' }}>
@@ -224,12 +230,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Main Contact Bento */}
       <section className="py-24 bg-[#051125] section-divider">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-            {/* Contact Form */}
             <div className="lg:col-span-7 glass-card rounded-2xl p-8 lg:p-10 shadow-lg">
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-16">
@@ -240,7 +243,6 @@ export default function ContactPage() {
                   <p className="text-slate-400 max-w-sm mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Thank you, {formData.name}. We have received your inquiry. Our specialist team will send an email to {formData.email} within 24 hours.
                   </p>
-
                   <button
                     onClick={() => { setSubmitted(false); setFormData({ name: '', organization: '', email: '', service: 'Revenue Cycle Management', message: '' }); }}
                     className="mt-8 text-sm font-semibold text-teal-400 hover:text-teal-300 underline transition-colors"
@@ -351,25 +353,17 @@ export default function ContactPage() {
               )}
             </div>
 
-            {/* Right column: Calendar + Help */}
             <div className="lg:col-span-5 flex flex-col gap-6">
-              {/* Calendar */}
               <div className="bg-[#030d1a] border border-white/10 rounded-2xl p-6 shadow-xl shadow-black/50">
                 {meetingConfirmed ? (
                   <div className="flex flex-col items-center justify-center text-center py-10 h-full">
                     <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mb-4">
                       <span className="material-symbols-outlined text-emerald-400 text-[32px]">event_available</span>
                     </div>
-                    <h2 className="font-bold text-white mb-2" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px' }}>Meeting Scheduled!</h2>
-                    <p className="text-slate-400 text-sm mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      An email with the invite link has been sent.
+                    <h2 className="font-bold text-white mb-2" style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px' }}>Meeting Requested!</h2>
+                    <p className="text-slate-400 text-sm mb-6 max-w-xs" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      We have received your request. An invite will be sent to your email when the meeting starts.
                     </p>
-                    <div className="bg-white/5 border border-white/10 rounded-xl p-4 w-full text-left mb-6">
-                      <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Google Meet Link</p>
-                      <a href={meetLink} target="_blank" rel="noopener noreferrer" className="text-teal-400 font-bold hover:underline break-all">
-                        {meetLink}
-                      </a>
-                    </div>
                     <button
                       onClick={() => { setMeetingConfirmed(false); setSelectedDay(null); }}
                       className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
@@ -433,14 +427,14 @@ export default function ContactPage() {
                       {/* Time slots */}
                       <div className="mt-5 pt-4 border-t border-white/10">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 block" style={{ fontFamily: 'Inter, sans-serif' }}>
-                          Available Times (CST)
+                          Available Times (EST)
                         </label>
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="grid grid-cols-2 gap-2 mb-3">
                           {times.map((t) => (
                             <button
                               key={t}
-                              onClick={() => setSelectedTime(t)}
-                              className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${selectedTime === t
+                              onClick={() => { setSelectedTime(t); setCustomTimeVal(''); }}
+                              className={`py-2.5 border rounded-lg text-xs font-semibold transition-all duration-200 ${selectedTime === t && !customTimeVal
                                 ? 'border-teal-500 bg-teal-500/20 text-teal-300'
                                 : 'border-white/10 bg-white/5 text-slate-300 hover:border-teal-500/50 hover:bg-white/10 hover:text-teal-400'
                                 }`}
@@ -450,11 +444,42 @@ export default function ContactPage() {
                             </button>
                           ))}
                         </div>
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            Or specify custom time
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="e.g. 02:45 PM"
+                            onFocus={(e) => (e.target.type = "time")}
+                            onBlur={(e) => {
+                              if (!e.target.value) e.target.type = "text";
+                            }}
+                            value={customTimeVal}
+                            onChange={handleCustomTime}
+                            className="w-full px-4 py-2.5 bg-white/5 border border-white/10 text-white rounded-lg focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all outline-none text-sm placeholder:text-slate-500 custom-time-input"
+                            style={{ fontFamily: 'Inter, sans-serif' }}
+                          />
+                        </div>
                       </div>
+                    </div>
+                    <div className="mt-4">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 block" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Your Email Address
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="john@example.com"
+                        value={meetingEmail}
+                        onChange={e => setMeetingEmail(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/10 text-white rounded-lg focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all outline-none text-sm placeholder:text-slate-600"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      />
                     </div>
                     <button
                       onClick={handleSchedule}
-                      disabled={!selectedDay || !selectedTime || isSubmitting}
+                      disabled={!selectedDay || !selectedTime || !meetingEmail || isSubmitting}
                       className="w-full mt-4 py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-500 active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px' }}
                     >
